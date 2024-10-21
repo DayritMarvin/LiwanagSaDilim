@@ -10,16 +10,17 @@ public class PlayerMovements : MonoBehaviour
     public float speedMovement ;
     public float jumpForce; 
     private bool isGrounded = false;
-    
+    private bool facingRight = true;
+    private float horizontalInput;
     void Start (){
             Rigidbody2D = GetComponent <Rigidbody2D> ();
-
-    }
+           
+}
     
     // Player Movements
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
         Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speedMovement , Rigidbody2D.velocity.y);
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
@@ -28,11 +29,7 @@ public class PlayerMovements : MonoBehaviour
             
         }
 
-        if (horizontalInput > 0.01f)
-            transform.localScale = new Vector3(0.38128f, 0.38128f, 0.38128f);
-        else if (horizontalInput < -0.01f)
-            transform.localScale = new Vector3(-0.38128f, 0.38128f, 0.38128f); 
-        
+        Direction();
     }
     private void jump () 
     {
@@ -48,6 +45,17 @@ public class PlayerMovements : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    private void Direction()
+    {
+        if (horizontalInput <0 && facingRight || horizontalInput >0 && !facingRight)
+        {
+            facingRight = !facingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
+            
+
     }
 
 }
