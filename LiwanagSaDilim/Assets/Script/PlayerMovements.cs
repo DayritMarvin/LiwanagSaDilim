@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
-   
+
     private Rigidbody2D Rigidbody2D;
     public float speedMovement ;
     public float jumpForce; 
