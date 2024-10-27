@@ -12,8 +12,16 @@ public class PlayerMovements : MonoBehaviour
     private bool isGrounded = false;
     private bool facingRight = true;
     private float horizontalInput;
+
+    // 4 animation
+    private Animator animation;
+    //private bool grounded;
+
     void Start (){
+
+        // references for rigidbody and animator from object 
             Rigidbody2D = GetComponent <Rigidbody2D> ();
+            animation = GetComponent<Animator> ();
            
 }
     
@@ -30,13 +38,20 @@ public class PlayerMovements : MonoBehaviour
         }
 
         Direction();
+
+        // set animator parameters
+        animation.SetBool("Walk", horizontalInput != 0);
+        animation.SetBool("grounded", isGrounded);
     }
+    // player jump
     private void jump () 
     {
 
         Rigidbody2D.velocity = new Vector2 (Rigidbody2D.velocity.x, jumpForce);
+        // grounded = false;
         isGrounded = false; 
-
+        animation.SetTrigger("jumpAni");
+       
     }
 
     private void OnCollisionEnter2D (Collision2D col) 
