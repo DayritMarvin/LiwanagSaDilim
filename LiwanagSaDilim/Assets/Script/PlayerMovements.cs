@@ -16,6 +16,7 @@ public class PlayerMovements : MonoBehaviour
     private float horizontalInput;
     public bool damaged = false;
     public static int lives = 5;
+    private bool pushing = false;
     // 4 animation
     private Animator animation;
     //private bool grounded;
@@ -56,7 +57,11 @@ public class PlayerMovements : MonoBehaviour
             StartCoroutine("Invulnerable");
 
             }
-        
+        if (Input.GetKey(KeyCode.E))
+        {
+            animation.SetTrigger("push");
+
+        }
        
     }
     // player jump
@@ -90,6 +95,8 @@ public class PlayerMovements : MonoBehaviour
             isGrounded = true;
         }
        
+       
+        
     }
 
     private void OnTriggerEnter2D (Collider2D col)

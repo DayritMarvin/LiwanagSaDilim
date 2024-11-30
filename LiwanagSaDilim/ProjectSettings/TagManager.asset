@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Enemy
+  - Pushable
   layers:
   - Default
   - TransparentFX

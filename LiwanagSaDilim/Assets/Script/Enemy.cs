@@ -17,12 +17,11 @@ public class Enemy : MonoBehaviour
     void Update()
        
     {
-            
         
         if (detection == true)
         {
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            transform.localScale = new Vector3(-1, 1, 1);
+           
         }
     }
     private void OnTriggerEnter2D(Collider2D col)
@@ -34,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        transform.localScale = new Vector3(1, 1, 1);
+       
         detection = false;
 
     }
