@@ -48,7 +48,7 @@ public class PlayerMovements : MonoBehaviour
         // set animator parameters
         animation.SetBool("Walk", horizontalInput != 0);
         animation.SetBool("grounded", isGrounded);
-
+        animation.SetBool("push",pushing);
         Direction();
 
         if (damaged == true)
@@ -57,13 +57,17 @@ public class PlayerMovements : MonoBehaviour
             StartCoroutine("Invulnerable");
 
             }
-        if (Input.GetKey(KeyCode.E))
+        if (pushing == true)
         {
             animation.SetTrigger("push");
-
+           
         }
+    
        
+
     }
+
+    
     // player jump
     private void jump()
     {
@@ -90,13 +94,23 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Floor")
+        if (col.gameObject.tag == "Floor" || col.gameObject.tag =="Pushable")
         {
             isGrounded = true;
         }
        
+       if (col.gameObject.tag =="Pushable" )
+        {
+            pushing = true;
+        }
+        else
+        {
+            pushing = false;
+           
+        }
        
-        
+
+
     }
 
     private void OnTriggerEnter2D (Collider2D col)
