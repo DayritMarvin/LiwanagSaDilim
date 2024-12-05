@@ -11,7 +11,7 @@ public class Dead : MonoBehaviour
     public GameObject dead;
     public GameObject Player;
     public bool isDead;
-    public int lives = 5;
+   
 
     //lives game object
 

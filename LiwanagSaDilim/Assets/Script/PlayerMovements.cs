@@ -15,7 +15,7 @@ public class PlayerMovements : MonoBehaviour
     private bool facingRight = true;
     private float horizontalInput;
     public bool damaged = false;
-    public static int lives = 5;
+    public static int lives = 3;
     private bool pushing = false;
     // 4 animation
     private Animator animation;
@@ -108,19 +108,28 @@ public class PlayerMovements : MonoBehaviour
             pushing = false;
            
         }
-       
+        if (col.gameObject.tag == "Enemy")
+        {
+            damaged = true;
+            lives -= 1;
+        }
+
 
 
     }
 
     private void OnTriggerEnter2D (Collider2D col)
     {
-        if (col.gameObject.tag == "Enemy")
+      
+
+        if (col.gameObject.tag == "Death")
         {
             damaged = true;
-            lives -= 1;
+            lives *= 0;
         }
     }
+
+
 
     private void Direction()
     {
