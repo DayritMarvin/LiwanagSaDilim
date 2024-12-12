@@ -45,3 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: bg1
+    uniqueID: 2929354885
+    locked: 0
+  - name: bg2
+    uniqueID: 900673699
+    locked: 0
+  - name: bg3
+    uniqueID: 2299424439
+    locked: 0
+  - name: bg4
+    uniqueID: 2895462479
+    locked: 0
