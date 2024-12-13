@@ -16,7 +16,7 @@ public class ScenesManager : MonoBehaviour
         MainMenu,
         MainStory,
         SampleScene,
-        Level1
+        level1
     }
     public void LoadScene(Scene scene)
     {
@@ -25,7 +25,7 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadNewGame()
     {
-        SceneManager.LoadScene(Scene.Level1.ToString());
+        SceneManager.LoadScene(Scene.level1.ToString());
     }
     public void LoadNextScene()
     {

@@ -83,6 +83,7 @@ public class PlayerMovements : MonoBehaviour
             {
                 Player.SetActive(false); // Deactivate the player GameObject
                 GameOver.SetActive(true);
+                lives = 3;
             }
         }
 
