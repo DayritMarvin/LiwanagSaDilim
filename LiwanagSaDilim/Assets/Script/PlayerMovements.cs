@@ -17,6 +17,10 @@ public class PlayerMovements : MonoBehaviour
     public bool damaged = false;
     public static int lives = 3;
     private bool pushing = false;
+    public GameObject Player;
+    public GameObject GameOver;
+    private bool isDying = false;
+    private float deathTimer = 2.2f;
     // 4 animation
     private Animator animation;
     //private bool grounded;
@@ -62,14 +66,39 @@ public class PlayerMovements : MonoBehaviour
             animation.SetTrigger("push");
            
         }
-    
+        if (lives <= 0 && !isDying)
+        {
+            isDying = true; // Start the countdown
+           
+        }
+
+        // Countdown logic
+        if (isDying)
+        {
+            animation.SetTrigger("death");
+            Rigidbody2D.velocity = new Vector2(0, Rigidbody2D.velocity.y);
+            deathTimer -= Time.deltaTime; // Decrease the timer
+
+            if (deathTimer <= 0f)
+            {
+                Player.SetActive(false); // Deactivate the player GameObject
+                GameOver.SetActive(true);
+            }
+        }
+
+      
+           
+        
+    }
        
 
-    }
+    
 
     
-    // player jump
-    private void jump()
+
+
+// player jump
+private void jump()
     {
 
         Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpForce);
@@ -113,8 +142,10 @@ public class PlayerMovements : MonoBehaviour
             damaged = true;
             lives -= 1;
         }
-
-
+        if (col.gameObject.tag == "Portal")
+        {
+            Rigidbody2D.velocity = new Vector2(0, Rigidbody2D.velocity.y);
+        }
 
     }
 

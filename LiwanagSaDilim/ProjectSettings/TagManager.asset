@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Pushable
   - Death
+  - Portal
   layers:
   - Default
   - TransparentFX

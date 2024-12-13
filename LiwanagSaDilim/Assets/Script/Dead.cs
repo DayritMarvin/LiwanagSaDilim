@@ -8,7 +8,7 @@ using TMPro;
 public class Dead : MonoBehaviour
 {
 
-    public GameObject dead;
+   
     public GameObject Player;
     public bool isDead;
    
@@ -74,11 +74,7 @@ public class Dead : MonoBehaviour
 
 
         }
-        if (PlayerMovements.lives <= 0)
-        {
-            dead.SetActive(true);
-            Player.SetActive(false);
-        }
+       
 
 
    
