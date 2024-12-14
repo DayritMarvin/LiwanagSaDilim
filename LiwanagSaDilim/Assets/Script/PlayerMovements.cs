@@ -33,11 +33,11 @@ public class PlayerMovements : MonoBehaviour
     SoundManager audioManager;
     //private bool isPlaying = false;
     
-    /*private void Awake()
+    private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundManager>();
         
-    }*/
+    }
 
 
     //invulnerable
@@ -133,10 +133,7 @@ public class PlayerMovements : MonoBehaviour
 
 
         }
-       
-
-    
-
+      
     
 
 
