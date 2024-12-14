@@ -1,46 +1,58 @@
 
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyPatrol : MonoBehaviour
 {
-    
-    public float speed;
-    public float distance;
-    public bool detection;
-    public GameObject player;
-    private Animator animation;
-    void Start()
-    {
+  
+    [SerializeField] private Transform pointA; 
+    [SerializeField] private Transform pointB; 
+    [SerializeField] private float speed = 2f; 
+    [SerializeField] private float threshold = 0.1f; 
 
+    private Transform _targetPoint;
+    private bool _facingRight = true; 
+    private Animator _animator; 
+
+    private void Start()
+    {
+        _targetPoint = pointA; 
+        _animator = GetComponent<Animator>(); 
     }
-    // Update is called once per frame
-    void Update()
-       
+
+    private void Update()
+    {
+        Patrol();
+    }
+
+    private void Patrol()
     {
         
+        transform.position = Vector3.MoveTowards(transform.position, _targetPoint.position, speed * Time.deltaTime);
 
-        if (detection == true)
+       
+        _animator.SetBool("IsWalking", true);
+
+       
+        if (Vector3.Distance(transform.position, _targetPoint.position) <= threshold)
         {
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
            
+            _animator.SetBool("IsWalking", false);
+
+          
+            _targetPoint = _targetPoint == pointA ? pointB : pointA;
+
+           
+            Flip();
         }
-       
-      
-    }
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Player")
-           
-             detection = true;
-        
     }
 
-    private void OnTriggerExit2D(Collider2D col)
+    private void Flip()
     {
-       
-        detection = false;
-       
+        _facingRight = !_facingRight; 
 
+       
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 }
-    

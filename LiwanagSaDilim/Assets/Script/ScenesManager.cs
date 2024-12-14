@@ -38,6 +38,7 @@ public class ScenesManager : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("SampleScene");
+        PlayerMovements.lives = 3;
     }
 
 }

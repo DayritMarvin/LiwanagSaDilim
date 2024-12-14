@@ -19,17 +19,20 @@ public class PlayerMovements : MonoBehaviour
     private bool pushing = false;
     public GameObject Player;
     public GameObject GameOver;
+    public GameObject effectCanvas;
+   
     private bool isDying = false;
     private float deathTimer = 2.2f;
-    // 4 animation
+   
     private Animator animation;
-    //private bool grounded;
+  
+
 
     //invulnerable
     Renderer rend;
     Color c;
         void Start() {
-
+       
         // references for rigidbody and animator from object 
         Rigidbody2D = GetComponent<Rigidbody2D>();
         animation = GetComponent<Animator>();
@@ -57,10 +60,11 @@ public class PlayerMovements : MonoBehaviour
 
         if (damaged == true)
         {
-
+            
             StartCoroutine("Invulnerable");
-
-            }
+           
+        }
+        
         if (pushing == true)
         {
             animation.SetTrigger("push");
@@ -83,14 +87,14 @@ public class PlayerMovements : MonoBehaviour
             {
                 Player.SetActive(false); // Deactivate the player GameObject
                 GameOver.SetActive(true);
-                lives = 3;
+                
             }
         }
 
-      
-           
-        
-    }
+  
+
+
+        }
        
 
     
@@ -111,6 +115,9 @@ private void jump()
     }
     IEnumerator Invulnerable()
     {
+        effectCanvas.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        effectCanvas.SetActive(false);
         Physics2D.IgnoreLayerCollision(7, 8, true);
         c.a = 0.5f;
         rend.material.color = c;
@@ -121,6 +128,7 @@ private void jump()
         damaged = false;
        
     }
+  
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -142,12 +150,11 @@ private void jump()
         {
             damaged = true;
             lives -= 1;
+           
         }
-        if (col.gameObject.tag == "Portal")
-        {
-            Rigidbody2D.velocity = new Vector2(0, Rigidbody2D.velocity.y);
-        }
-
+        
+        
+       
     }
 
     private void OnTriggerEnter2D (Collider2D col)
@@ -156,8 +163,9 @@ private void jump()
 
         if (col.gameObject.tag == "Death")
         {
-            damaged = true;
+           
             lives *= 0;
+          
         }
     }
 
