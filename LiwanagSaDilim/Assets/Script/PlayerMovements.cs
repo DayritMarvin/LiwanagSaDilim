@@ -27,6 +27,17 @@ public class PlayerMovements : MonoBehaviour
    
     private Animator animation;
   
+    // Sound Manager
+    //[SerializeField] private AudioClip jumpSound;
+
+    SoundManager audioManager;
+    //private bool isPlaying = false;
+    
+    /*private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundManager>();
+        
+    }*/
 
 
     //invulnerable
@@ -45,19 +56,38 @@ public class PlayerMovements : MonoBehaviour
 
         void Update()
         {
+        
         horizontalInput = Input.GetAxis("Horizontal");
+
         Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speedMovement, Rigidbody2D.velocity.y);
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             jump();
-
+            audioManager.PlaySFX(audioManager.jump);
+            
         }
+
+
+        
+
+        
         // set animator parameters
         animation.SetBool("Walk", horizontalInput != 0);
         animation.SetBool("grounded", isGrounded);
         animation.SetBool("push",pushing);
         Direction();
+
+           if (horizontalInput != 0 && isGrounded)
+        {
+            audioManager.PlayWalkSound(); // Play the walk sound
+        }
+        else
+        {
+            audioManager.StopWalkSound(); // Stop the walk sound
+        }
+
+
 
         if (damaged == true)
         {
@@ -75,6 +105,7 @@ public class PlayerMovements : MonoBehaviour
         if (pushing == true)
         {
             animation.SetTrigger("push");
+            
            
         }
         if (lives <= 0 && !isDying)
@@ -112,13 +143,13 @@ public class PlayerMovements : MonoBehaviour
 // player jump
 private void jump()
     {
-
+        
         Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpForce);
         // grounded = false;
         animation.SetTrigger("jump");
         isGrounded = false;
-
-
+        
+        
     }
     IEnumerator Invulnerable()
     {
