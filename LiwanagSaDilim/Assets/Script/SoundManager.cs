@@ -33,7 +33,15 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    
+
+   public void PlayJumpSound()
+    {
+        if (SFXSource != null && jump != null)
+        {
+            SFXSource.clip = jump;
+            SFXSource.Play();
+        }
+    }
 
     public void PlayWalkSound()
     {

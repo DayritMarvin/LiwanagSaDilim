@@ -15,7 +15,7 @@ public class ScenesManager : MonoBehaviour
     {
         MainMenu,
         MainStory,
-        SampleScene,
+        Tutorial,
         level1
     }
     public void LoadScene(Scene scene)
@@ -37,7 +37,7 @@ public class ScenesManager : MonoBehaviour
     }
     public void Replay()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Tutorial");
         PlayerMovements.lives = 3;
     }
 
