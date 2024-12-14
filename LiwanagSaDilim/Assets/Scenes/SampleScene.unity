@@ -6366,8 +6366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d11a6920da37c6499dab5617b5dc2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 0
-  effectCanvas: {fileID: 0}
 --- !u!1 &272004978
 GameObject:
   m_ObjectHideFlags: 0
@@ -14612,8 +14610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d11a6920da37c6499dab5617b5dc2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 0
-  effectCanvas: {fileID: 2041526585}
 --- !u!95 &861004391
 Animator:
   serializedVersion: 5
@@ -30981,6 +30977,7 @@ MonoBehaviour:
   Player: {fileID: 4785780472657052805}
   GameOver: {fileID: 8783624018551229209}
   effectCanvas: {fileID: 1377723759}
+  effectCanvas2: {fileID: 2041526585}
 --- !u!224 &6564236416362576508
 RectTransform:
   m_ObjectHideFlags: 0

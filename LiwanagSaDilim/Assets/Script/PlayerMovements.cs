@@ -20,7 +20,8 @@ public class PlayerMovements : MonoBehaviour
     public GameObject Player;
     public GameObject GameOver;
     public GameObject effectCanvas;
-   
+    public GameObject effectCanvas2;
+    private bool healed=false;
     private bool isDying = false;
     private float deathTimer = 2.2f;
    
@@ -64,7 +65,13 @@ public class PlayerMovements : MonoBehaviour
             StartCoroutine("Invulnerable");
            
         }
-        
+        if (healed == true)
+        {
+
+            StartCoroutine("Healed");
+
+        }
+
         if (pushing == true)
         {
             animation.SetTrigger("push");
@@ -128,7 +135,14 @@ private void jump()
         damaged = false;
        
     }
-  
+  IEnumerator Healed()
+    {
+        effectCanvas2.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        effectCanvas2.SetActive(false);
+        healed = false;
+
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -152,9 +166,9 @@ private void jump()
             lives -= 1;
            
         }
-        
-        
-       
+     
+
+
     }
 
     private void OnTriggerEnter2D (Collider2D col)
@@ -166,6 +180,12 @@ private void jump()
            
             lives *= 0;
           
+        }
+        if (col.gameObject.tag == "Firefly")
+        {
+            healed = true;
+
+
         }
     }
 
