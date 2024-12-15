@@ -61,10 +61,13 @@ public class PlayerMovements : MonoBehaviour
 
         Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speedMovement, Rigidbody2D.velocity.y);
 
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+
+
+        if (Input.GetKey(KeyCode.Space) && isGrounded && lives > 0)
         {
             audioManager.PlayJumpSound();
             jump();
+            
             
            
         }
