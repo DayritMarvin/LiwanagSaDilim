@@ -6,7 +6,7 @@ public class MainStory : MonoBehaviour
 {
     void OnEnable()
     {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
 
     }
    
