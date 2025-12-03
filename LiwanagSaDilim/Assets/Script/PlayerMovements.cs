@@ -1,241 +1,250 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovements : MonoBehaviour
 {
-
-    private Rigidbody2D Rigidbody2D;
+    private Rigidbody2D rb;
     public float speedMovement;
     public float jumpForce;
+    
+    // FLAGS
     private bool isGrounded = false;
     private bool facingRight = true;
     private float horizontalInput;
     public bool damaged = false;
-    public static int lives = 3;
     private bool pushing = false;
+    private bool healed = false;
+    private bool isDying = false;
+
+    // HEALTH & LIGHT SETTINGS
+    public static int lives = 3; 
+    public int maxLives = 10;
+    public Light2D playerLight;
+    public float maxLightRadius = 5f;
+    public float maxLightIntensity = 1.5f;
+
+    // UI & EFFECTS
     public GameObject Player;
     public GameObject GameOver;
     public GameObject effectCanvas;
     public GameObject effectCanvas2;
-    private bool healed=false;
-    private bool isDying = false;
-    private float deathTimer = 2.2f;
-   
-    private Animator animation;
-  
-    // Sound Manager
-    //[SerializeField] private AudioClip jumpSound;
-
-    SoundManager audioManager;
-    //private bool isPlaying = false;
     
+    // DEATH TIMER
+    private float deathTimer = 2.2f;
+    
+    // ANIMATOR & AUDIO
+    private Animator anim;
+    private Renderer rend;
+    private Color c;
+    SoundManager audioManager;
+
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundManager>();
-        
+        // Safety check kung may SoundManager sa scene
+        GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+        if (audioObj != null)
+            audioManager = audioObj.GetComponent<SoundManager>();
     }
 
-
-    //invulnerable
-    Renderer rend;
-    Color c;
-        void Start() {
-       
-        // references for rigidbody and animator from object 
-        Rigidbody2D = GetComponent<Rigidbody2D>();
-        animation = GetComponent<Animator>();
+    void Start() 
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
         c = rend.material.color;
 
-        }
+        // FIX #1: I-reset ang lives sa Start para hindi bugbog pag nag-retry
+        lives = 3; 
 
+        // Initial light update
+        UpdateLight();
+    }
 
-        void Update()
-        {
-        
+    void Update()
+    {
+        // MOVEMENT
         horizontalInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horizontalInput * speedMovement, rb.velocity.y);
 
-        Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speedMovement, Rigidbody2D.velocity.y);
-
-
-
-        if (Input.GetKey(KeyCode.Space) && isGrounded && lives > 0)
+        // JUMP
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && lives > 0)
         {
-            audioManager.PlayJumpSound();
-            jump();
-            
-            
-           
+            if(audioManager) audioManager.PlayJumpSound();
+            Jump();
         }
 
-
+        // ANIMATION SETTINGS
+        anim.SetBool("Walk", horizontalInput != 0);
+        anim.SetBool("grounded", isGrounded);
+        anim.SetBool("push", pushing);
         
+        CheckDirection();
 
-        
-        // set animator parameters
-        animation.SetBool("Walk", horizontalInput != 0);
-        animation.SetBool("grounded", isGrounded);
-        animation.SetBool("push",pushing);
-        Direction();
-
-           if (horizontalInput != 0 && isGrounded)
+        // AUDIO WALK
+        if (horizontalInput != 0 && isGrounded)
         {
-            audioManager.PlayWalkSound(); // Play the walk sound
+            if(audioManager) audioManager.PlayWalkSound();
         }
         else
         {
-            audioManager.StopWalkSound(); // Stop the walk sound
+            if(audioManager) audioManager.StopWalkSound();
         }
 
+        // EFFECTS LOGIC
+        if (damaged) StartCoroutine(Invulnerable());
+        if (healed) StartCoroutine(HealedEffect());
+        if (pushing) anim.SetTrigger("push");
 
-
-        if (damaged == true)
-        {
-            
-            StartCoroutine("Invulnerable");
-           
-        }
-        if (healed == true)
-        {
-
-            StartCoroutine("Healed");
-
-        }
-
-        if (pushing == true)
-        {
-            animation.SetTrigger("push");
-            
-           
-        }
+        // DEATH LOGIC
         if (lives <= 0 && !isDying)
         {
-            isDying = true; // Start the countdown
-           
+            isDying = true;
         }
 
-        // Countdown logic
         if (isDying)
         {
-            animation.SetTrigger("death");
-            Rigidbody2D.velocity = new Vector2(0, Rigidbody2D.velocity.y);
-            deathTimer -= Time.deltaTime; // Decrease the timer
-
-            if (deathTimer <= 0f)
-            {
-                Player.SetActive(false); // Deactivate the player GameObject
-                GameOver.SetActive(true);
-                
-            }
+            HandleDeath();
         }
-
-  
-
-
-        }
-      
-    
-
-
-// player jump
-private void jump()
-    {
-        
-        Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpForce);
-        // grounded = false;
-        animation.SetTrigger("jump");
-        isGrounded = false;
-        
-        
     }
+
+    // --- CUSTOM FUNCTIONS ---
+
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        anim.SetTrigger("jump");
+        isGrounded = false;
+    }
+
+    private void CheckDirection()
+    {
+        if ((horizontalInput < 0 && facingRight) || (horizontalInput > 0 && !facingRight))
+        {
+            facingRight = !facingRight;
+            transform.Rotate(0f, 180f, 0f);
+        }
+    }
+
+    // FIX #3: LIGHT LOGIC
+    public void UpdateLight()
+    {
+        if (playerLight == null) return;
+
+        // Calculate percentage (Health / MaxHealth)
+        float lightPercent = (float)lives / maxLives;
+
+        // Update Light 2D properties
+        playerLight.pointLightOuterRadius = maxLightRadius * lightPercent;
+        playerLight.intensity = maxLightIntensity * lightPercent;
+    }
+
+    public void AddLife()
+    {
+        if (lives < maxLives)
+        {
+            lives++;
+            healed = true;
+            UpdateLight();
+        }
+    }
+
+    public void TakeDamage()
+    {
+        if (!damaged)
+        {
+            lives--;
+            damaged = true;
+            UpdateLight();
+        }
+    }
+
+    private void HandleDeath()
+    {
+        anim.SetTrigger("death");
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        deathTimer -= Time.deltaTime;
+
+        if (deathTimer <= 0f)
+        {
+            Player.SetActive(false);
+            GameOver.SetActive(true);
+        }
+    }
+
+    // --- COROUTINES ---
+
     IEnumerator Invulnerable()
     {
-        effectCanvas.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        effectCanvas.SetActive(false);
-        Physics2D.IgnoreLayerCollision(7, 8, true);
+        if(effectCanvas) effectCanvas.SetActive(true);
+        
+        // Visual flashing
+        Physics2D.IgnoreLayerCollision(7, 8, true); // Siguraduhing tama ang Layer Numbers mo dito!
         c.a = 0.5f;
         rend.material.color = c;
-        yield return new WaitForSeconds(3f);
+        
+        yield return new WaitForSeconds(0.5f);
+        if(effectCanvas) effectCanvas.SetActive(false);
+
+        yield return new WaitForSeconds(2.5f); // Total wait
+        
         Physics2D.IgnoreLayerCollision(7, 8, false);
         c.a = 1f;
         rend.material.color = c;
         damaged = false;
-       
     }
-  IEnumerator Healed()
-    {
-        effectCanvas2.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        effectCanvas2.SetActive(false);
-        healed = false;
 
+    IEnumerator HealedEffect()
+    {
+        if(effectCanvas2) effectCanvas2.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        if(effectCanvas2) effectCanvas2.SetActive(false);
+        healed = false;
     }
+
+    // --- COLLISIONS ---
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Floor" || col.gameObject.tag =="Pushable")
+        if (col.gameObject.CompareTag("Floor") || col.gameObject.CompareTag("Pushable"))
         {
             isGrounded = true;
         }
-       
-       if (col.gameObject.tag =="Pushable" )
+        
+        if (col.gameObject.CompareTag("Pushable"))
         {
             pushing = true;
         }
         else
         {
             pushing = false;
-           
         }
-        if (col.gameObject.tag == "Enemy")
+
+        if (col.gameObject.CompareTag("Enemy"))
         {
-            damaged = true;
-            lives -= 1;
-           
+            TakeDamage();
         }
-     
-
-
     }
 
-    private void OnTriggerEnter2D (Collider2D col)
+    private void OnCollisionExit2D(Collision2D col)
     {
-      
-
-        if (col.gameObject.tag == "Death")
+        if (col.gameObject.CompareTag("Pushable"))
         {
-           
-            lives *= 0;
-          
-        }
-        if (col.gameObject.tag == "Firefly")
-        {
-            healed = true;
-
-
+            pushing = false;
         }
     }
 
-
-
-    private void Direction()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (horizontalInput < 0 && facingRight || horizontalInput > 0 && !facingRight)
+        if (col.gameObject.CompareTag("Death"))
         {
-            facingRight = !facingRight;
-            transform.Rotate(new Vector3(0, 180, 0));
+            lives = 0;
+            UpdateLight();
         }
+        
+        // Note: Ang Firefly collision ay iha-handle na ng Fireflies.cs 
+        // gamit ang AddLife() function natin sa taas.
     }
-
-   
-
-    }
-   
-   
-
-
+}

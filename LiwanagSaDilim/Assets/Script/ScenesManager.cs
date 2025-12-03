@@ -43,7 +43,7 @@ public class ScenesManager : MonoBehaviour
 
     public void Replaylevel1()
     {
-        SceneManager.LoadScene("level1");
+        SceneManager.LoadScene("LevelHandler");
         PlayerMovements.lives = 3;
     }
 

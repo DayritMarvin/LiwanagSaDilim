@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 4665314177866442054}
   - component: {fileID: 1066026052511221670}
   - component: {fileID: 4719883673657970898}
+  - component: {fileID: 2819256954101869512}
   m_Layer: 0
-  m_Name: Fireflies
+  m_Name: Blue Firefly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.09055519, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.988304, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.09411765, b: 1, a: 1}
   m_Intensity: 4.23
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -206,3 +207,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2819256954101869512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2949609471034633913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5df824841e055340ae960e3393d8962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementRange: 3
+  speed: 0.5

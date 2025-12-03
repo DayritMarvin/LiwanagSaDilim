@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2771545681841691233}
   - component: {fileID: 2154170269609099817}
   - component: {fileID: 8914316253193583715}
+  - component: {fileID: 1426273229023870108}
   m_Layer: 8
   m_Name: Liyab
   m_TagString: Player
@@ -258,7 +259,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.9429259
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -334,6 +335,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1426273229023870108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144318889072391190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496a3c627320c574cadbc9d7d04d8961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2009854309211375884
 GameObject:
   m_ObjectHideFlags: 0
