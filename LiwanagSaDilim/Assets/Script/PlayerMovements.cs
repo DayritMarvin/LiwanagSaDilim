@@ -9,6 +9,7 @@ public class PlayerMovements : MonoBehaviour
     private Rigidbody2D rb;
     public float speedMovement;
     public float jumpForce;
+    private LevelHandler levelHandler;
     
     // FLAGS
     private bool isGrounded = false;
@@ -43,7 +44,6 @@ public class PlayerMovements : MonoBehaviour
 
     private void Awake()
     {
-        // Safety check kung may SoundManager sa scene
         GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
         if (audioObj != null)
             audioManager = audioObj.GetComponent<SoundManager>();
@@ -56,11 +56,11 @@ public class PlayerMovements : MonoBehaviour
         rend = GetComponent<Renderer>();
         c = rend.material.color;
 
-        // FIX #1: I-reset ang lives sa Start para hindi bugbog pag nag-retry
         lives = 3; 
 
-        // Initial light update
         UpdateLight();
+
+        levelHandler = FindObjectOfType<LevelHandler>();
     }
 
     void Update()
@@ -92,6 +92,18 @@ public class PlayerMovements : MonoBehaviour
         {
             if(audioManager) audioManager.StopWalkSound();
         }
+
+        // --- FIX: STOP SOUND KAPAG STOP TIME ---
+        if (Time.timeScale == 0)
+        {
+            if (audioManager != null)
+            {
+                audioManager.StopWalkSound();
+            }
+            return; // Itigil na ang pagbasa ng iba pang input
+        }
+        
+        horizontalInput = Input.GetAxis("Horizontal");
 
         // EFFECTS LOGIC
         if (damaged) StartCoroutine(Invulnerable());
@@ -170,7 +182,10 @@ public class PlayerMovements : MonoBehaviour
         if (deathTimer <= 0f)
         {
             Player.SetActive(false);
-            GameOver.SetActive(true);
+            if (levelHandler != null)
+            {
+                levelHandler.levelFailed(); 
+            }
         }
     }
 
@@ -243,8 +258,23 @@ public class PlayerMovements : MonoBehaviour
             lives = 0;
             UpdateLight();
         }
-        
-        // Note: Ang Firefly collision ay iha-handle na ng Fireflies.cs 
-        // gamit ang AddLife() function natin sa taas.
+    }
+
+    private void OnDisable()
+    {
+        if (effectCanvas != null)
+        {
+            effectCanvas.SetActive(false);
+        }
+
+        if (effectCanvas2 != null)
+        {
+            effectCanvas2.SetActive(false);
+        }
+
+        if (audioManager != null)
+        {
+            audioManager.StopWalkSound();
+        }
     }
 }

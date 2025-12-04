@@ -80,8 +80,13 @@ public class LevelHandler : MonoBehaviour
             levelEnd = true;
             GameManager.setLevelCollectedFragments(level, fragmentsCollected);
             GameManager.UnlockLevel(level + 1);
-            Time.timeScale = 0f;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                player.SetActive(false);
+            }
 
+            Time.timeScale = 0f;
             VictoryPanel.SetActive(true);
         }
     }
@@ -123,5 +128,10 @@ public class LevelHandler : MonoBehaviour
     {
         MenuPanel.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

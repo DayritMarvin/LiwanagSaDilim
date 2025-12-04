@@ -22,6 +22,6 @@ public class CountingFragments : MonoBehaviour
     IEnumerator fragmentsPop()
     {
         yield return new WaitForSecondsRealtime(0.2f * fragmentsCountAssigned);
-        GetComponent<Animator>().Play("FragmentsPop");
+        GetComponent<Animator>().Play("VictoryFragments");
     }
 }

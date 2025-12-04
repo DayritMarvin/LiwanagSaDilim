@@ -1,19 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using TMPro;
 
-
 public class Dead : MonoBehaviour
 {
-
-   
     public GameObject Player;
     public bool isDead;
-   
-
-    //lives game object
 
     public GameObject life1;
     public GameObject life2;
@@ -22,64 +15,71 @@ public class Dead : MonoBehaviour
     public GameObject life5;
     public TMP_Text fireflies;
 
-
-    //invulnerable
-  
     private void Start()
     {
-        life5.gameObject.SetActive(false);
-        life4.gameObject.SetActive(false);
-        life3.gameObject.SetActive(false);
-        life2.gameObject.SetActive(false);
-        life1.gameObject.SetActive(false);
-
-       
+        DisableAllLives();
     }
 
     void Update()
     {
-        fireflies.text = PlayerMovements.lives.ToString("Fireflies: " + PlayerMovements.lives);
-        if (PlayerMovements.lives <= 5)
+        // --- FIX #1: CLAMPING (Pigilan ang Negative) ---
+        // Kung bumaba sa 0, ibalik agad sa 0.
+        if (PlayerMovements.lives < 0)
         {
-            life5.gameObject.SetActive(true);
-
-
+            PlayerMovements.lives = 0;
         }
-        if (PlayerMovements.lives <= 4)
+
+        // --- FIX #2: TEXT DISPLAY ---
+        // Ipakita ang text. Tinanggal ko yung redundant na formatting.
+        fireflies.text = PlayerMovements.lives.ToString();
+
+
+        // --- FIX #3: UI LOGIC (Mas malinis na paraan) ---
+        // I-check natin kung ilan ang buhay at i-activate ang tamang object.
+        
+        if (PlayerMovements.lives >= 5)
         {
-            life5.gameObject.SetActive(false);
-            life4.gameObject.SetActive(true);
-            life3.gameObject.SetActive(false);
-
+            SetActiveLife(life5);
         }
-        if (PlayerMovements.lives <= 3)
+        else if (PlayerMovements.lives == 4)
         {
-            life4.gameObject.SetActive(false);
-            life3.gameObject.SetActive(true);
-            life2.gameObject.SetActive(false);
-
+            SetActiveLife(life4);
         }
-        if (PlayerMovements.lives <= 2)
+        else if (PlayerMovements.lives == 3)
         {
-            life3.gameObject.SetActive(false);
-            life2.gameObject.SetActive(true);
-            life1.gameObject.SetActive(false);
-
+            SetActiveLife(life3);
         }
-        if (PlayerMovements.lives <= 1)
+        else if (PlayerMovements.lives == 2)
         {
-
-            life2.gameObject.SetActive(false);
-            life1.gameObject.SetActive(true);
-
-
+            SetActiveLife(life2);
         }
-       
-
-
-   
+        else if (PlayerMovements.lives == 1)
+        {
+            SetActiveLife(life1);
+        }
+        else // Kapag 0 na ang buhay
+        {
+            DisableAllLives(); // Patayin lahat ng display
+        }
     }
-   
+
+    // Helper function para patayin lahat muna bago buksan ang isa
+    // Para hindi nagpapatong-patong
+    void SetActiveLife(GameObject lifeToActivate)
+    {
+        DisableAllLives(); // Reset muna
+        lifeToActivate.SetActive(true); // Buksan yung kailangan
+    }
+
+    void DisableAllLives()
+    {
+        life1.SetActive(false);
+        life2.SetActive(false);
+        life3.SetActive(false);
+        life4.SetActive(false);
+        life5.SetActive(false);
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         isDead = false;
