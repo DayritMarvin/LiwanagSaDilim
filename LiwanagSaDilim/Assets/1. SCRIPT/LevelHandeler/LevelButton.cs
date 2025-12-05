@@ -62,8 +62,8 @@ public class LevelButton : MonoBehaviour
         }
     }
 
-    public void Testing()
+    public void Tutorial()
     {
-        SceneManager.LoadScene("LevelHandler");
+        SceneManager.LoadScene("MainStory");
     }
 }

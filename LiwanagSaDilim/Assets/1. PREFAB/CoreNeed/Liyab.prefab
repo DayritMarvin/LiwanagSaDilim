@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2154170269609099817}
   - component: {fileID: 8914316253193583715}
   - component: {fileID: 1426273229023870108}
+  - component: {fileID: 2415783077047385127}
   m_Layer: 8
   m_Name: Liyab
   m_TagString: Player
@@ -218,17 +219,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbc2761b30d8594590c8551205b8818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerModel: {fileID: 144318889072391190}
+  effectCanvas: {fileID: 0}
+  effectCanvas2: {fileID: 0}
   speedMovement: 4.93
   jumpForce: 10
-  damaged: 0
   maxLives: 10
   playerLight: {fileID: 0}
   maxLightRadius: 5
   maxLightIntensity: 1.5
-  Player: {fileID: 144318889072391190}
-  GameOver: {fileID: 0}
-  effectCanvas: {fileID: 0}
-  effectCanvas2: {fileID: 0}
+  damaged: 0
+  blueIndicator: {fileID: 0}
+  greenIndicator: {fileID: 0}
+  dashButton: {fileID: 0}
+  dashSpeed: 15
+  dashDuration: 0.2
+  dashCooldown: 1
+  redIndicator: {fileID: 0}
 --- !u!114 &2154170269609099817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +358,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496a3c627320c574cadbc9d7d04d8961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2415783077047385127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144318889072391190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200d6e742e12923459892e4d7fc38b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 144318889072391190}
+  isDead: 0
+  life1: {fileID: 3013824177886649768}
+  life2: {fileID: 6958522554004868098}
+  life3: {fileID: 4778313720081400582}
+  life4: {fileID: 2009854309211375884}
+  life5: {fileID: 5886304068135036499}
+  fireflies: {fileID: 0}
 --- !u!1 &2009854309211375884
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,17 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class CollectFragments : MonoBehaviour
 {
-    LevelHandler levelHandler;
+    private LevelHandler levelHandler;
 
     private void Start()
     {
-        GameObject[] rootObjs = SceneManager.GetActiveScene().GetRootGameObjects();
-        foreach (GameObject obj in rootObjs)
+        levelHandler = FindObjectOfType<LevelHandler>();
+
+        if (levelHandler == null)
         {
-            if(levelHandler == null)
-            {
-                obj.TryGetComponent<LevelHandler>(out levelHandler);
-            }
+            Debug.LogError("ERROR: Walang LevelHandler na mahanap sa Scene");
         }
     }
 
@@ -23,8 +21,15 @@ public class CollectFragments : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            levelHandler.addFragments();
-            Destroy(gameObject);
+            if (levelHandler != null)
+            {
+                levelHandler.addFragments();
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.LogError("Nawawala ang LevelHandler");
+            }
         }
     }
 }

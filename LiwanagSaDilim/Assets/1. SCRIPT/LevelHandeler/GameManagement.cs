@@ -14,11 +14,22 @@ public static class GameManager
         {3,0},
         {4,0},
         {5,0},
+        {6,0},
+        {7,0},
+        {8,0},
+        {9,0},
+        {10,0},
+
     };
 
     static List<bool> levelUnlock = new List<bool>()
     {
         true,
+        false,
+        false,
+        false,
+        false,
+        false,
         false,
         false,
         false,

@@ -22,20 +22,12 @@ public class Dead : MonoBehaviour
 
     void Update()
     {
-        // --- FIX #1: CLAMPING (Pigilan ang Negative) ---
-        // Kung bumaba sa 0, ibalik agad sa 0.
         if (PlayerMovements.lives < 0)
         {
             PlayerMovements.lives = 0;
         }
 
-        // --- FIX #2: TEXT DISPLAY ---
-        // Ipakita ang text. Tinanggal ko yung redundant na formatting.
         fireflies.text = PlayerMovements.lives.ToString();
-
-
-        // --- FIX #3: UI LOGIC (Mas malinis na paraan) ---
-        // I-check natin kung ilan ang buhay at i-activate ang tamang object.
         
         if (PlayerMovements.lives >= 5)
         {
@@ -57,18 +49,16 @@ public class Dead : MonoBehaviour
         {
             SetActiveLife(life1);
         }
-        else // Kapag 0 na ang buhay
+        else
         {
-            DisableAllLives(); // Patayin lahat ng display
+            DisableAllLives();
         }
     }
 
-    // Helper function para patayin lahat muna bago buksan ang isa
-    // Para hindi nagpapatong-patong
     void SetActiveLife(GameObject lifeToActivate)
     {
-        DisableAllLives(); // Reset muna
-        lifeToActivate.SetActive(true); // Buksan yung kailangan
+        DisableAllLives();
+        lifeToActivate.SetActive(true);
     }
 
     void DisableAllLives()

@@ -17,8 +17,8 @@ public class PlayerMovements : MonoBehaviour
 
     [Header("--- EXTERNAL OBJECTS ---")]
     public GameObject PlayerModel; 
-    public GameObject effectCanvas; 
-    public GameObject effectCanvas2; 
+    public GameObject DamageEffect; 
+    public GameObject HealthEffect; 
     #endregion
 
     #region 2. MOVEMENT SETTINGS
@@ -126,8 +126,8 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnDisable()
     {
-        if (effectCanvas != null) effectCanvas.SetActive(false);
-        if (effectCanvas2 != null) effectCanvas2.SetActive(false);
+        if (DamageEffect != null) DamageEffect.SetActive(false);
+        if (HealthEffect != null) HealthEffect.SetActive(false);
         if (audioManager != null) audioManager.StopWalkSound();
     }
     #endregion
@@ -401,19 +401,19 @@ public class PlayerMovements : MonoBehaviour
     #region COROUTINES
     IEnumerator InvulnerableRoutine() 
     { 
-        if(effectCanvas) effectCanvas.SetActive(true); 
+        if(DamageEffect) DamageEffect.SetActive(true); 
         Physics2D.IgnoreLayerCollision(7, 8, true); 
         Color c = rend.material.color; c.a = 0.5f; 
         rend.material.color = c; 
         yield return new WaitForSeconds(0.5f); 
 
-        if(effectCanvas) effectCanvas.SetActive(false); 
+        if(DamageEffect) DamageEffect.SetActive(false); 
         yield return new WaitForSeconds(2.5f); 
         Physics2D.IgnoreLayerCollision(7, 8, false); 
         rend.material.color = originalColor; 
         damaged = false; 
         }
 
-    IEnumerator HealedRoutine() { if(effectCanvas2) effectCanvas2.SetActive(true); yield return new WaitForSeconds(0.5f); if(effectCanvas2) effectCanvas2.SetActive(false); healed = false; }
+    IEnumerator HealedRoutine() { if(HealthEffect) HealthEffect.SetActive(true); yield return new WaitForSeconds(0.5f); if(HealthEffect) HealthEffect.SetActive(false); healed = false; }
     #endregion
 }
