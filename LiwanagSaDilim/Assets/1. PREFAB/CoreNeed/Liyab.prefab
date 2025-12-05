@@ -221,6 +221,10 @@ MonoBehaviour:
   speedMovement: 4.93
   jumpForce: 10
   damaged: 0
+  maxLives: 10
+  playerLight: {fileID: 0}
+  maxLightRadius: 5
+  maxLightIntensity: 1.5
   Player: {fileID: 144318889072391190}
   GameOver: {fileID: 0}
   effectCanvas: {fileID: 0}
