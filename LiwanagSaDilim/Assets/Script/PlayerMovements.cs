@@ -25,7 +25,7 @@ public class PlayerMovements : MonoBehaviour
     private bool isDying = false;
     private float deathTimer = 2.2f;
    
-    private Animator animation;
+    private Animator animator;
   
     // Sound Manager
     //[SerializeField] private AudioClip jumpSound;
@@ -47,7 +47,7 @@ public class PlayerMovements : MonoBehaviour
        
         // references for rigidbody and animator from object 
         Rigidbody2D = GetComponent<Rigidbody2D>();
-        animation = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
         c = rend.material.color;
 
@@ -77,9 +77,9 @@ public class PlayerMovements : MonoBehaviour
 
         
         // set animator parameters
-        animation.SetBool("Walk", horizontalInput != 0);
-        animation.SetBool("grounded", isGrounded);
-        animation.SetBool("push",pushing);
+        animator.SetBool("Walk", horizontalInput != 0);
+        animator.SetBool("grounded", isGrounded);
+        animator.SetBool("push",pushing);
         Direction();
 
            if (horizontalInput != 0 && isGrounded)
@@ -108,7 +108,7 @@ public class PlayerMovements : MonoBehaviour
 
         if (pushing == true)
         {
-            animation.SetTrigger("push");
+            animator.SetTrigger("push");
             
            
         }
@@ -121,7 +121,7 @@ public class PlayerMovements : MonoBehaviour
         // Countdown logic
         if (isDying)
         {
-            animation.SetTrigger("death");
+            animator.SetTrigger("death");
             Rigidbody2D.velocity = new Vector2(0, Rigidbody2D.velocity.y);
             deathTimer -= Time.deltaTime; // Decrease the timer
 
@@ -147,7 +147,7 @@ private void jump()
         
         Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, jumpForce);
         // grounded = false;
-        animation.SetTrigger("jump");
+        animator.SetTrigger("jump");
         isGrounded = false;
         
         

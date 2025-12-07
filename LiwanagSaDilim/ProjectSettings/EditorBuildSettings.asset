@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 9fca3830ac4f8c7499ed216b7aed4556
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainStory.unity
     guid: 0394631ebee7cd34daba04992105a2ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/level1.unity
     guid: 8aeb05e119c266e4cb11427fbe6aa4f8
+  - enabled: 1
+    path: Assets/Voice Recognition/Voice Testing.unity
+    guid: 97671e9cdae7f004bb29e4fef326f2da
   m_configObjects: {}
