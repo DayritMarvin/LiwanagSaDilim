@@ -43,6 +43,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+
     public void PlayWalkSound()
     {
         if (SFXSource.clip != walk || !SFXSource.isPlaying)

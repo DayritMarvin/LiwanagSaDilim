@@ -11,6 +11,7 @@ TagManager:
   - Portal
   - Firefly
   - Audio
+  - HeavyPushable
   layers:
   - Default
   - TransparentFX
