@@ -1169,9 +1169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 31.57, y: 36.24, z: 36.67, w: 37}
+  m_RaycastPadding: {x: 20, y: 20, z: 20, w: 20}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2468,9 +2468,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 31.57, y: 36.24, z: 36.67, w: 37}
+  m_RaycastPadding: {x: 20, y: 20, z: 20, w: 20}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3239,7 +3239,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 42.67, y: 42.71, z: 58.3, w: 56.11}
+  m_RaycastPadding: {x: 20, y: 20, z: 20, w: 20}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3814,9 +3814,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 31.57, y: 36.24, z: 36.67, w: 37}
+  m_RaycastPadding: {x: 20, y: 20, z: 20, w: 20}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4672,9 +4672,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 31.57, y: 36.24, z: 36.67, w: 37}
+  m_RaycastPadding: {x: 20, y: 20, z: 20, w: 20}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5164,7 +5164,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 46.87, y: 41.44, z: 58.95, w: 58.72}
+  m_RaycastPadding: {x: 20, y: 20, z: 20, w: 20}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6703,6 +6703,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2330517617690576512}
     m_Modifications:
+    - target: {fileID: 966170002864619511, guid: 40d6e631f46a64643b42a843a77af6d5, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 966170002864619511, guid: 40d6e631f46a64643b42a843a77af6d5, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 966170002864619511, guid: 40d6e631f46a64643b42a843a77af6d5, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 966170002864619511, guid: 40d6e631f46a64643b42a843a77af6d5, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 966170002864619511, guid: 40d6e631f46a64643b42a843a77af6d5, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1946609752347550770, guid: 40d6e631f46a64643b42a843a77af6d5, type: 3}
       propertyPath: m_Name
       value: Dash Button

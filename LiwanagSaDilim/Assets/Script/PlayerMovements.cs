@@ -347,7 +347,7 @@ public class PlayerMovements : MonoBehaviour
                 if (isRedActive)
                 {
                     // Kung may strength, gawing magaan (5)
-                    boxRb.mass = 15f; 
+                    boxRb.mass = 10f; 
                     pushing = true;
                 }
                 else
