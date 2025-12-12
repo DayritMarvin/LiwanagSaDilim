@@ -21,4 +21,10 @@ public class ButtonScript : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    //MainStory Button
+    public void MainStorySkip()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
 }
