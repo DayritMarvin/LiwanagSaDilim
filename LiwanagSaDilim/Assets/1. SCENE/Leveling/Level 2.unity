@@ -16010,10 +16010,6 @@ PrefabInstance:
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 2135348138}
-    - target: {fileID: 2548740346868172401, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2564652523744162922, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_Name
       value: SupermasterPrefab
