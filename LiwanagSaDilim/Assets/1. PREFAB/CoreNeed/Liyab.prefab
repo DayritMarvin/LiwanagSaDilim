@@ -87,7 +87,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 077d2200a1f06434c80a8a3ebe0cb68e, type: 3}
   m_Color: {r: 0.3882353, g: 0.32941177, b: 0.21568628, a: 1}
   m_FlipX: 0
@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerModel: {fileID: 144318889072391190}
-  effectCanvas: {fileID: 0}
-  effectCanvas2: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  HealthEffect: {fileID: 0}
   speedMovement: 4.93
   jumpForce: 10
   maxLives: 10
@@ -236,6 +236,10 @@ MonoBehaviour:
   dashDuration: 0.2
   dashCooldown: 1
   redIndicator: {fileID: 0}
+  currentPower: 0
+  blueButton: {fileID: 0}
+  greenButton: {fileID: 0}
+  redButton: {fileID: 0}
 --- !u!114 &2154170269609099817
 MonoBehaviour:
   m_ObjectHideFlags: 0

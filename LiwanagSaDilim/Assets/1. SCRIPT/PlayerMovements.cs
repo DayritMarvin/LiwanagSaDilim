@@ -78,6 +78,18 @@ public class PlayerMovements : MonoBehaviour
     // Settings para sa Heavy Box manipulation
     private float normalMass = 1f;    // Bigat kapag malakas si Liyab
     private float heavyMass = 1000f;  // Bigat kapag normal si Liyab
+
+    [Header("--- IMPROVED POWER COMMANDS ---")]
+    public PowerUpType currentPower = PowerUpType.None;
+    public enum PowerUpType { None, Blue, Green, Red}
+    float powerTimer = 0f;
+    /// <summary>
+    /// /for button indicator
+    /// </summary>
+    [SerializeField] GameObject blueButton;
+    [SerializeField] GameObject greenButton;
+    [SerializeField] GameObject redButton;
+
     #endregion
 
     // ---------------------------------------------------------
@@ -102,7 +114,7 @@ public class PlayerMovements : MonoBehaviour
 
         lives = 3;
         UpdateLight();
-        ResetPowerUpsUI();
+        currentPower = PowerUpType.None;
     }
 
     void Update()
@@ -115,8 +127,9 @@ public class PlayerMovements : MonoBehaviour
 
         if (isDashing) return; 
 
-        HandlePowerUpTimers();
+        //HandlePowerUpTimers();
         ProcessInputs();
+        ImprovedTimer();
         UpdateAnimations();
         HandleEffects();
 
@@ -161,7 +174,9 @@ public class PlayerMovements : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && lives > 0) HandleJumpLogic();
         if (Input.GetKeyDown(KeyCode.LeftShift) && lives > 0) DashBtn(); // Test key
-        if (Input.GetKeyDown(KeyCode.R) && lives > 0) ActivateRedPower(); // Test key
+        if (Input.GetKeyDown(KeyCode.R) && lives > 0) ImprovedActivatePower(PowerUpType.Red); // Test key
+        if (Input.GetKeyDown(KeyCode.B) && lives > 0) ImprovedActivatePower(PowerUpType.Blue); // Test key
+        if (Input.GetKeyDown(KeyCode.G) && lives > 0) ImprovedActivatePower(PowerUpType.Green); // Test key
     }
 
     void HandleJumpLogic()
@@ -206,74 +221,6 @@ public class PlayerMovements : MonoBehaviour
     #endregion
 
     #region POWER-UP SYSTEM LOGIC (ALL)
-    
-    // --- TIMERS ---
-    void HandlePowerUpTimers()
-    {
-        if (isBlueActive) 
-        { 
-            blueTimer -= Time.deltaTime; 
-            if (blueTimer <= 0) DeactivateBluePower(); 
-        }
-
-        if (isGreenActive) 
-        { 
-            greenTimer -= Time.deltaTime; 
-            if (greenTimer <= 0) DeactivateGreenPower(); 
-        }
-
-        if (isRedActive) 
-        { 
-            redTimer -= Time.deltaTime; 
-            if (redTimer <= 0) DeactivateRedPower(); 
-        }
-    }
-
-    void ResetPowerUpsUI()
-    {
-        if(blueIndicator != null) blueIndicator.SetActive(false);
-        if(greenIndicator != null) greenIndicator.SetActive(false);
-        if(redIndicator != null) redIndicator.SetActive(false);
-        if(dashButton != null) dashButton.SetActive(false);
-    }
-
-    // --- BLUE POWER (DOUBLE JUMP) ---
-    public void ActivateBluePower()
-    {
-        DeactivateGreenPower(); 
-        DeactivateRedPower();
-
-        isBlueActive = true;
-        blueTimer = 5f; 
-        if (blueIndicator != null) blueIndicator.SetActive(true);
-    }
-    private void DeactivateBluePower()
-    {
-        isBlueActive = false;
-        blueTimer = 0f;
-        if (blueIndicator != null) blueIndicator.SetActive(false);
-    }
-
-    // --- GREEN POWER (DASH) ---
-    public void ActivateGreenPower()
-    {
-        DeactivateBluePower();
-        DeactivateRedPower();
-
-        isGreenActive = true;
-        greenTimer = 5f;
-        if (greenIndicator != null) greenIndicator.SetActive(true);
-        if (dashButton != null) dashButton.SetActive(true); 
-    }
-
-    private void DeactivateGreenPower()
-    {
-        isGreenActive = false;
-        greenTimer = 0f;
-        if (greenIndicator != null) greenIndicator.SetActive(false);
-        if (dashButton != null) dashButton.SetActive(false); 
-    }
-    
     public void DashBtn()
     {
         if (isGreenActive && canDash && !isDashing && lives > 0) StartCoroutine(DashRoutine());
@@ -290,24 +237,160 @@ public class PlayerMovements : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown); canDash = true;
     }
 
+    #region IMPROVED POWER COMMAND BY NULL
+    public void ImprovedActivatePower(PowerUpType curPower)
+    {
+        currentPower = curPower;
+        powerTimer = 5f;
+    }
+
+    public void ImprovedDeactivatePower()
+    {
+        powerTimer = 0f;
+    }
+
+    public void ImprovedPowerButton(int power)
+    {
+        ImprovedActivatePower((PowerUpType)power);
+    }
+
+    //timer for power up, also handles button indicators and other related stuff
+    void ImprovedTimer()
+    {
+        switch (currentPower)
+        {
+            case PowerUpType.Blue:
+                
+                break;
+            case PowerUpType.Green:
+                if(Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    DashBtn();
+                }
+                break;
+            case PowerUpType.Red:
+                
+                break;
+            default:
+                
+                break;
+        }
+        if(currentPower != PowerUpType.None)
+        {
+            powerTimer -= Time.deltaTime;
+        }
+
+        if(powerTimer <= 0)
+        {
+            currentPower = PowerUpType.None;
+        }
+        
+        redIndicator.SetActive(currentPower == PowerUpType.Red);
+        blueIndicator.SetActive(currentPower == PowerUpType.Blue);
+        greenIndicator.SetActive(currentPower == PowerUpType.Green);
+
+        blueButton.SetActive(currentPower == PowerUpType.Blue);
+        greenButton.SetActive(currentPower == PowerUpType.Green);
+        redButton.SetActive(currentPower == PowerUpType.Red);
+
+        isBlueActive = currentPower == PowerUpType.Blue;
+        isGreenActive = currentPower == PowerUpType.Green;
+        isRedActive = currentPower == PowerUpType.Red;
+
+        if (dashButton != null) dashButton.SetActive(currentPower == PowerUpType.Green);
+    }
+
+    #endregion
+
+
+    #region Remove Power Up Codes
+        
+    // --- BLUE POWER (DOUBLE JUMP) ---
+    // public void ActivateBluePower()
+    // {
+    //     DeactivateGreenPower(); 
+    //     DeactivateRedPower();
+
+    //     isBlueActive = true;
+    //     blueTimer = 5f; 
+    //     if (blueIndicator != null) blueIndicator.SetActive(true);
+    // }
+    // private void DeactivateBluePower()
+    // {
+    //     isBlueActive = false;
+    //     blueTimer = 0f;
+    //     if (blueIndicator != null) blueIndicator.SetActive(false);
+    // }
+
+    // --- GREEN POWER (DASH) ---
+    // public void ActivateGreenPower()
+    // {
+    //     DeactivateBluePower();
+    //     DeactivateRedPower();
+
+    //     isGreenActive = true;
+    //     greenTimer = 5f;
+    //     if (greenIndicator != null) greenIndicator.SetActive(true);
+    //     if (dashButton != null) dashButton.SetActive(true); 
+    // }
+
+    // private void DeactivateGreenPower()
+    // {
+    //     isGreenActive = false;
+    //     greenTimer = 0f;
+    //     if (greenIndicator != null) greenIndicator.SetActive(false);
+    //     if (dashButton != null) dashButton.SetActive(false); 
+    // }
+
     // --- RED POWER (STRENGTH) ---
-    public void ActivateRedPower()
-    {
-        DeactivateBluePower();
-        DeactivateGreenPower();
+    // public void ActivateRedPower()
+    // {
+    //     DeactivateBluePower();
+    //     DeactivateGreenPower();
 
-        isRedActive = true;
-        redTimer = 5f;
-        if (redIndicator != null) redIndicator.SetActive(true);
-    }
+    //     isRedActive = true;
+    //     redTimer = 5f;
+    //     if (redIndicator != null) redIndicator.SetActive(true);
+    // }
 
-    private void DeactivateRedPower()
-    {
-        isRedActive = false;
-        redTimer = 0f;
-        if (redIndicator != null) redIndicator.SetActive(false);
-    }
+    // private void DeactivateRedPower()
+    // {
+    //     isRedActive = false;
+    //     redTimer = 0f;
+    //     if (redIndicator != null) redIndicator.SetActive(false);
+    // }
 
+    // --- TIMERS ---
+    // void HandlePowerUpTimers()
+    // {
+    //     if (isBlueActive) 
+    //     { 
+    //         blueTimer -= Time.deltaTime; 
+    //         if (blueTimer <= 0) DeactivateBluePower(); 
+    //     }
+
+    //     if (isGreenActive) 
+    //     { 
+    //         greenTimer -= Time.deltaTime; 
+    //         if (greenTimer <= 0) DeactivateGreenPower(); 
+    //     }
+
+    //     if (isRedActive) 
+    //     { 
+    //         redTimer -= Time.deltaTime; 
+    //         if (redTimer <= 0) DeactivateRedPower(); 
+    //     }
+    // }
+    
+    // void ResetPowerUpsUI()
+    // {
+    //     if(blueIndicator != null) blueIndicator.SetActive(false);
+    //     if(greenIndicator != null) greenIndicator.SetActive(false);
+    //     if(redIndicator != null) redIndicator.SetActive(false);
+    //     if(dashButton != null) dashButton.SetActive(false);
+    // }
+
+    #endregion
     #endregion
 
     #region HEALTH & LIGHT SYSTEM
