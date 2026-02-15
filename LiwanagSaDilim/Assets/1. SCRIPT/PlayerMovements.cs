@@ -18,6 +18,7 @@ public class PlayerMovements : MonoBehaviour
     private Color originalColor;
     private LevelHandler levelHandler;
     private SoundManager audioManager;
+    PlayerVoiceCommand voiceCommand;
 
     [Header("--- EXTERNAL OBJECTS ---")]
     public GameObject PlayerModel; 
@@ -114,6 +115,7 @@ public class PlayerMovements : MonoBehaviour
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
         levelHandler = FindObjectOfType<LevelHandler>();
+        voiceCommand = GetComponent<PlayerVoiceCommand>();
 
         lives = 3;
         UpdateLight();
@@ -122,6 +124,8 @@ public class PlayerMovements : MonoBehaviour
         currentPower = PowerUpType.None;
         ControlDropdown();
     }
+
+    
 
     void Update()
     {
@@ -230,7 +234,7 @@ public class PlayerMovements : MonoBehaviour
 
     void ImprovedControls()
     {
-        DropdownValueChanged(controlDropdown);
+        //DropdownValueChanged(controlDropdown);
 
         // if(Application.isMobilePlatform)
         // {
@@ -240,6 +244,11 @@ public class PlayerMovements : MonoBehaviour
         // {
         //     ForPc();
         // }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1)) movementControlType = MovementControlType.Mobile;
+        if(Input.GetKeyDown(KeyCode.Alpha2)) movementControlType = MovementControlType.MobileAi;
+        if(Input.GetKeyDown(KeyCode.Alpha3)) movementControlType = MovementControlType.PC;
+        if(Input.GetKeyDown(KeyCode.Alpha4)) movementControlType = MovementControlType .PCAi;
 
         ForMobile();
         ForPc();
@@ -280,7 +289,7 @@ public class PlayerMovements : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.G) && lives > 0) ImprovedActivatePower(PowerUpType.Green);
                 break;
             case MovementControlType.PCAi:
-                
+                voiceCommand.Active();
                 break;
         }
         if (Input.GetKeyDown(KeyCode.Space)) HandleJumpLogic();
@@ -288,6 +297,10 @@ public class PlayerMovements : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         
     }
+
+    /// <summary>
+    /// FOR TESTING CONTROLS ONLY
+    /// </summary>
 
     void ControlDropdown()
     {
