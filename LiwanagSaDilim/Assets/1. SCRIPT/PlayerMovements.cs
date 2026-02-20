@@ -89,7 +89,7 @@ public class PlayerMovements : MonoBehaviour
     float powerTimer = 0f;
 
     [Header("--- MOVEMENT CONTROL TYPES ---")]
-    public MovementControlType movementControlType = MovementControlType.None;
+    public MovementControlType movementControlType = MovementControlType.PC;
 
     public GameObject[] ButtonUi;
     public GameObject[] AiUi;
@@ -272,6 +272,7 @@ public class PlayerMovements : MonoBehaviour
                 horizontalInput = Input.GetAxisRaw("Horizontal") + mobileInput;
                 break;
             case MovementControlType.MobileAi:
+                voiceCommand.Active();
                 horizontalInput = Input.acceleration.x + 1;
                 break;
         }

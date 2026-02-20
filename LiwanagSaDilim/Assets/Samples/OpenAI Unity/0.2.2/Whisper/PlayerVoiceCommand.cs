@@ -18,8 +18,9 @@ public class PlayerVoiceCommand : MonoBehaviour
 
     [Header("Integration")]
     [Tooltip("Drag the Player object with the PlayerMovements script here.")]
+    public VoiceCommandDatabase voiceDb = new VoiceCommandDatabase();
     PlayerMovements movements;
-    [SerializeField] private VoiceCommandDatabase voiceDb;
+    
 
     private OpenAIApi openai;
     private AudioClip clip;
@@ -161,8 +162,8 @@ public class VoiceMapping
     public List<string> keywords; // Example: "red", "strength", "power"
 }
 
-[CreateAssetMenu(fileName = "VoiceDatabase", menuName = "ScriptableObjects/VoiceDatabase")]
-public class VoiceCommandDatabase : ScriptableObject
+[System.Serializable]
+public class VoiceCommandDatabase
 {
     public string wakeWord = "light";
     public List<VoiceMapping> mappings;

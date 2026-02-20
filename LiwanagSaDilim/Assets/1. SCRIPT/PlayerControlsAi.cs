@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MovementControlType { None, PC, Mobile, MobileAi, PCAi}
+public enum MovementControlType {PC, PCAi, Mobile, MobileAi}
 public class PlayerControlsAi : MonoBehaviour
 {
     
