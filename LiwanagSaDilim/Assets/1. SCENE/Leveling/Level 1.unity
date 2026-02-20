@@ -1033,10 +1033,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 468490221677836447, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
-      propertyPath: openAiApiKey
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1071700889107213780, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: exitDoor
       value: 

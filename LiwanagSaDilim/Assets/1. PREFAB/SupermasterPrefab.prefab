@@ -2446,7 +2446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee052c4fa4dc514da095bb715f11873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openAiApiKey: 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
+  openAiApiKey: 
   modelName: whisper-1
   segmentDuration: 4
   voiceDb:

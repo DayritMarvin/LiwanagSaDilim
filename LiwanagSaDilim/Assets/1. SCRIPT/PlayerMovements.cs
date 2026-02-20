@@ -258,7 +258,7 @@ public class PlayerMovements : MonoBehaviour
         foreach(GameObject btn in AiUi)
         { 
             if(btn == null) return;
-            btn.SetActive(movementControlType == MovementControlType.Mobile);
+            btn.SetActive(movementControlType == MovementControlType.Mobile || movementControlType == MovementControlType.MobileAi);
         }
 
     }
@@ -269,13 +269,14 @@ public class PlayerMovements : MonoBehaviour
         switch(movementControlType)
         {
             case MovementControlType.Mobile:
-                horizontalInput = Input.GetAxisRaw("Horizontal") + mobileInput;
+                
                 break;
             case MovementControlType.MobileAi:
                 voiceCommand.Active();
-                horizontalInput = Input.acceleration.x + 1;
+                //horizontalInput = Input.acceleration.x + 1;
                 break;
         }
+        horizontalInput = Input.GetAxisRaw("Horizontal") + mobileInput;
 
     }
 
