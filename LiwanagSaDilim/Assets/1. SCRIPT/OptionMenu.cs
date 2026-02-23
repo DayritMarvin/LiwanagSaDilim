@@ -1,19 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI; 
+using TMPro;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal; // Importante para sa Brightness/Contrast
+using UnityEngine.Rendering.Universal;
 
 public class OptionsMenu : MonoBehaviour
 {
     [Header("--- AUDIO SETTINGS ---")]
-    public Slider bgmSlider; // I-drag ang BGM Slider dito
-    public Slider sfxSlider; // I-drag ang SFX Slider dito
+    public Slider bgmSlider; 
+    public Slider sfxSlider; 
     public SoundManager soundManager; 
 
     [Header("--- VISUAL SETTINGS ---")]
-    public Slider brightnessSlider; // I-drag ang Brightness Slider dito
-    public Slider contrastSlider;   // I-drag ang Contrast Slider dito
-    public Volume globalVolume;     // I-drag ang object na may Volume component dito
+    public Slider brightnessSlider; 
+    public Slider contrastSlider;   
+    public Volume globalVolume;     
+
+    [Header("--- VALUE TEXT DISPLAYS (0-100) ---")]
+    public TMP_Text bgmTextValue;
+    public TMP_Text sfxTextValue;
+    public TMP_Text brightnessTextValue;
+    public TMP_Text contrastTextValue;
 
     private ColorAdjustments colorAdjustments;
 
@@ -30,21 +37,21 @@ public class OptionsMenu : MonoBehaviour
         {
             bgmSlider.SetValueWithoutNotify(savedBGM);
             bgmSlider.onValueChanged.AddListener(OnBGMSliderChanged);
+            UpdateTextValue(bgmTextValue, savedBGM, 0f, 1f);
         }
         if (sfxSlider != null)
         {
             sfxSlider.SetValueWithoutNotify(savedSFX);
             sfxSlider.onValueChanged.AddListener(OnSFXSliderChanged);
+            UpdateTextValue(sfxTextValue, savedSFX, 0f, 1f);
         }
 
         // --- 2. SETUP VISUAL SLIDERS (URP) ---
         if (globalVolume != null)
         {
-            // Kunin ang ColorAdjustments mula sa Volume Profile
             globalVolume.profile.TryGet(out colorAdjustments);
         }
 
-        // Default value ay 0 para sa Brightness (Post Exposure) at Contrast
         float savedBrightness = PlayerPrefs.GetFloat("Brightness", 0f); 
         float savedContrast = PlayerPrefs.GetFloat("Contrast", 0f);
 
@@ -53,12 +60,14 @@ public class OptionsMenu : MonoBehaviour
             brightnessSlider.SetValueWithoutNotify(savedBrightness);
             brightnessSlider.onValueChanged.AddListener(OnBrightnessChanged);
             ApplyBrightness(savedBrightness);
+            UpdateTextValue(brightnessTextValue, savedBrightness, -2f, 2f);
         }
         if (contrastSlider != null)
         {
             contrastSlider.SetValueWithoutNotify(savedContrast);
             contrastSlider.onValueChanged.AddListener(OnContrastChanged);
             ApplyContrast(savedContrast);
+            UpdateTextValue(contrastTextValue, savedContrast, -50f, 50f);
         }
     }
 
@@ -66,11 +75,13 @@ public class OptionsMenu : MonoBehaviour
     public void OnBGMSliderChanged(float value)
     {
         if (soundManager != null) soundManager.SetBGMVolume(value);
+        UpdateTextValue(bgmTextValue, value, 0f, 1f);
     }
 
     public void OnSFXSliderChanged(float value)
     {
         if (soundManager != null) soundManager.SetSFXVolume(value);
+        UpdateTextValue(sfxTextValue, value, 0f, 1f);
     }
 
     // --- VISUAL FUNCTIONS ---
@@ -79,6 +90,7 @@ public class OptionsMenu : MonoBehaviour
         ApplyBrightness(value);
         PlayerPrefs.SetFloat("Brightness", value);
         PlayerPrefs.Save();
+        UpdateTextValue(brightnessTextValue, value, -2f, 2f);
     }
 
     public void OnContrastChanged(float value)
@@ -86,6 +98,7 @@ public class OptionsMenu : MonoBehaviour
         ApplyContrast(value);
         PlayerPrefs.SetFloat("Contrast", value);
         PlayerPrefs.Save();
+        UpdateTextValue(contrastTextValue, value, -50f, 50f);
     }
 
     private void ApplyBrightness(float value)
@@ -101,6 +114,15 @@ public class OptionsMenu : MonoBehaviour
         if (colorAdjustments != null)
         {
             colorAdjustments.contrast.Override(value);
+        }
+    }
+
+    private void UpdateTextValue(TMP_Text textComponent, float value, float min, float max)
+    {
+        if (textComponent != null)
+        {
+            float percentage = Mathf.InverseLerp(min, max, value) * 100f;
+            textComponent.text = Mathf.RoundToInt(percentage).ToString(); 
         }
     }
 }
