@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using System;
-using System.Diagnostics;
-using UnityEngine.UIElements;
-using Unity.VisualScripting;
+using UnityEngine.UI; 
 
 public class PlayerMovements : MonoBehaviour
 {
@@ -55,12 +53,11 @@ public class PlayerMovements : MonoBehaviour
     [Header("--- FOLLOWING FIREFLIES ---")]
     public GameObject[] followingFireflies; 
 
-    // --- BAGO: Mga Kulay para sa Fireflies ---
     [Header("--- FIREFLY COLORS ---")]
-    public Color originalFireflyColor = new Color(1f, 0.9f, 0.2f); // Default na medyo yellow
+    public Color originalFireflyColor = new Color(1f, 0.9f, 0.2f);
     public Color redPowerColor = Color.red;
     public Color greenPowerColor = Color.green;
-    public Color bluePowerColor = Color.cyan; // Cyan para mas maganda ang glow kaysa dark blue
+    public Color bluePowerColor = Color.cyan; 
 
     public bool damaged = false;
     private bool healed = false;
@@ -69,10 +66,8 @@ public class PlayerMovements : MonoBehaviour
     #endregion
 
     #region 4. POWER-UP SYSTEM (RGB)
-    
     [Header("--- BLUE POWER (DOUBLE JUMP) ---")]
     [HideInInspector] public bool isBlueActive = false;
-    private float blueTimer = 0f;
     private bool doubleJumpUsed = false;
 
     [Header("--- GREEN POWER (DASH) ---")]
@@ -81,16 +76,11 @@ public class PlayerMovements : MonoBehaviour
     public float dashDuration = 0.2f; 
     public float dashCooldown = 1f;   
     [HideInInspector] public bool isGreenActive = false;
-    private float greenTimer = 0f;
     private bool isDashing = false;   
     private bool canDash = true;      
 
     [Header("--- RED POWER (STRENGTH) ---")]
     [HideInInspector] public bool isRedActive = false;
-    private float redTimer = 0f;
-    private float normalMass = 1f;
-    private float heavyMass = 1000f;
-
     #endregion
 
     #region IMPROVEMENT BY NULL
@@ -106,9 +96,18 @@ public class PlayerMovements : MonoBehaviour
     public TMPro.TMP_Dropdown controlDropdown;
 
     [Header("--- POWER UP COOLDOWN UI ---")]
-    public UnityEngine.UI.Image blueCooldown;
-    public UnityEngine.UI.Image greenCooldown;
-    public UnityEngine.UI.Image redCooldown;
+    public Image blueCooldown;
+    public Image greenCooldown;
+    public Image redCooldown;
+    #endregion
+
+    #region INTERACTION & GRABBING 
+    [Header("--- INTERACTION & GRABBING ---")]
+    public KeyCode interactKey = KeyCode.E;
+    private Rigidbody2D currentBoxToGrab; 
+    private FixedJoint2D grabJoint;       
+    private bool isGrabbing = false;
+    [HideInInspector] public bool interactHeld = false; 
     #endregion
 
     // ---------------------------------------------------------
@@ -134,12 +133,13 @@ public class PlayerMovements : MonoBehaviour
 
         lives = 3;
         UpdateLight();
+        UpdateFireflyColors();
 
         currentPower = PowerUpType.None;
         ControlDropdown();
-        
-        // --- BAGO: I-set ang original na kulay pagka-start ng laro ---
-        UpdateFireflyColors();
+
+        grabJoint = gameObject.AddComponent<FixedJoint2D>();
+        grabJoint.enabled = false;
 
         Physics2D.IgnoreLayerCollision(7, 8, false);
         damaged = false;
@@ -160,6 +160,7 @@ public class PlayerMovements : MonoBehaviour
         }
 
         ProcessInputs();
+        HandleGrabbing(); 
 
         ImprovedTimer();
         ImprovedControls();
@@ -172,16 +173,18 @@ public class PlayerMovements : MonoBehaviour
     void FixedUpdate()
     {
         if (isDying) return; 
-        
         MovementImprovement();
     }
 
     void LateUpdate()
     {
-        if ((horizontalInput < 0 && facingRight) || (horizontalInput > 0 && !facingRight))
+        if (!isGrabbing)
         {
-            facingRight = !facingRight;
-            transform.Rotate(0f, 180f, 0f);
+            if ((horizontalInput < 0 && facingRight) || (horizontalInput > 0 && !facingRight))
+            {
+                facingRight = !facingRight;
+                transform.Rotate(0f, 180f, 0f);
+            }
         }
 
         if (horizontalInput != 0 && isGrounded)
@@ -211,12 +214,10 @@ public class PlayerMovements : MonoBehaviour
 
     public void HandleJumpLogic()
     {
-        if(lives <= 0) return;
+        if(lives <= 0 || isGrabbing) return; 
+        
         bool canDoubleJump = isBlueActive && !doubleJumpUsed;
-        if (!canJump && !canDoubleJump) 
-        {
-            return; 
-        }
+        if (!canJump && !canDoubleJump) return; 
 
         if (isGrounded)
         {
@@ -237,11 +238,8 @@ public class PlayerMovements : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         anim.SetTrigger("jump");
         isGrounded = false;
-
         StartCoroutine(JumpCooldownRoutine());
     }
-
-    #region MOVEMENT IMPROVED BY NULL
 
     void MovementImprovement()
     {
@@ -299,7 +297,6 @@ public class PlayerMovements : MonoBehaviour
                 break;
         }
         if (Input.GetKeyDown(KeyCode.Space)) HandleJumpLogic();
-
         horizontalInput = Input.GetAxisRaw("Horizontal");
     }
 
@@ -324,17 +321,14 @@ public class PlayerMovements : MonoBehaviour
     {
         movementControlType = (MovementControlType)change.value; 
     }
-
-    #endregion MOVEMENT IMPROVED BY NULL
-
     #endregion
 
-    #region ANIMATIONS & EFFECTS
+    #region ANIMATIONS
     void UpdateAnimations()
     {
         anim.SetBool("Walk", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded);
-        anim.SetBool("push", pushing);
+        anim.SetBool("push", pushing || isGrabbing); 
         
         if (pushing) anim.SetTrigger("push");
     }
@@ -350,9 +344,7 @@ public class PlayerMovements : MonoBehaviour
     {
         isDashing = true; 
         canDash = false;
-
         Physics2D.IgnoreLayerCollision(7, 8, true);
-
         Color dashColor = rend.material.color;
         dashColor.a = 0.5f;
         rend.material.color = dashColor;
@@ -366,25 +358,20 @@ public class PlayerMovements : MonoBehaviour
         rb.gravityScale = originalGravity; 
         rb.velocity = Vector2.zero; 
         isDashing = false;
-
         rend.material.color = originalColor;
 
-        if (!damaged)
-        {
-            Physics2D.IgnoreLayerCollision(7, 8, false);
-        }
+        if (!damaged) Physics2D.IgnoreLayerCollision(7, 8, false);
 
         yield return new WaitForSeconds(dashCooldown); 
         canDash = true;
     }
 
-    #region IMPROVED POWER COMMAND BY NULL
     public void ImprovedActivatePower(PowerUpType curPower)
     {
+        if (currentPower != PowerUpType.None) return; 
+
         currentPower = curPower;
         powerTimer = 5f;
-        
-        // --- BAGO: I-update ang kulay ng fireflies kapag nag-activate ng power ---
         UpdateFireflyColors(); 
     }
 
@@ -424,7 +411,6 @@ public class PlayerMovements : MonoBehaviour
 
         if(powerTimer <= 0)
         {
-            // --- BAGO: Ibalik sa original na kulay kapag naubos na ang timer ---
             if (currentPower != PowerUpType.None)
             {
                 currentPower = PowerUpType.None;
@@ -439,11 +425,9 @@ public class PlayerMovements : MonoBehaviour
         if (dashButton != null) dashButton.SetActive(currentPower == PowerUpType.Green);
     }
 
-    // --- BAGO: Function para magpalit ng kulay ang mga Fireflies ---
     void UpdateFireflyColors()
     {
         if (followingFireflies == null) return;
-
         Color targetColor = originalFireflyColor;
 
         if (currentPower == PowerUpType.Red) targetColor = redPowerColor;
@@ -454,18 +438,13 @@ public class PlayerMovements : MonoBehaviour
         {
             if (followingFireflies[i] != null)
             {
-                // Palitan ang kulay ng ilaw
                 Light2D light = followingFireflies[i].GetComponent<Light2D>();
                 if (light != null) light.color = targetColor;
-
-                // Palitan din ang kulay ng Sprite (kung nilagyan mo ng tuldok/sprite yung firefly)
                 SpriteRenderer sr = followingFireflies[i].GetComponent<SpriteRenderer>();
                 if (sr != null) sr.color = targetColor;
             }
         }
     }
-    #endregion IMPROVED POWER COMMAND BY NULL
-
     #endregion
 
     #region HEALTH & LIGHT SYSTEM
@@ -527,13 +506,73 @@ public class PlayerMovements : MonoBehaviour
     }
     #endregion
 
-    #region MOBILE CONTROLS
+    #region MOBILE CONTROLS & INTERACTION
     public void JumpBtn() {HandleJumpLogic(); }
     public void ButtonMove(int val) {mobileInput = val;}
+
+    // --- BAGO: Updated HandleGrabbing para sa Heavy Boxes ---
+    void HandleGrabbing()
+    {
+        bool tryingToGrab = Input.GetKey(interactKey) || interactHeld;
+
+        if (tryingToGrab)
+        {
+            if (!isGrabbing && currentBoxToGrab != null)
+            {
+                if (currentBoxToGrab.gameObject.CompareTag("HeavyPushable") && !isRedActive)
+                {
+                    return; 
+                }
+
+                grabJoint.connectedBody = currentBoxToGrab;
+                grabJoint.enabled = true;
+                isGrabbing = true;
+            }
+        }
+        else
+        {
+            if (isGrabbing)
+            {
+                if (grabJoint.connectedBody != null && grabJoint.connectedBody.gameObject.CompareTag("HeavyPushable"))
+                {
+                    grabJoint.connectedBody.mass = 1000f;
+                }
+
+                grabJoint.enabled = false;
+                grabJoint.connectedBody = null;
+                isGrabbing = false;
+                
+                // --- BUG FIX: Kalimutan agad ang box pagkabitaw ng E button ---
+                currentBoxToGrab = null; 
+            }
+        }
+
+        // Kapag naubos ang Red Power habang humahatak
+        if (isGrabbing && grabJoint.connectedBody != null && grabJoint.connectedBody.gameObject.CompareTag("HeavyPushable"))
+        {
+            if (isRedActive)
+            {
+                grabJoint.connectedBody.mass = 10f; 
+            }
+            else
+            {
+                grabJoint.connectedBody.mass = 1000f;
+                grabJoint.enabled = false;
+                grabJoint.connectedBody = null;
+                isGrabbing = false;
+                
+                // --- BUG FIX: Kalimutan din ang box kapag na-force bitaw ---
+                currentBoxToGrab = null;
+            }
+        }
+    }
+
+    public void InteractHoldDown() { interactHeld = true; }
+    public void InteractHoldUp() { interactHeld = false; }
     #endregion
 
     // ---------------------------------------------------------
-    // COLLISIONS (HEAVY BOX LOGIC IS HERE)
+    // COLLISIONS
     // ---------------------------------------------------------
 
     #region COLLISIONS
@@ -550,21 +589,15 @@ public class PlayerMovements : MonoBehaviour
             Rigidbody2D boxRb = col.gameObject.GetComponent<Rigidbody2D>();
             if (boxRb != null)
             {
-                if (isRedActive)
-                {
-                    boxRb.mass = 10f; 
-                    pushing = true;
-                }
-                else
-                {
-                    boxRb.mass = 1000f;
-                    pushing = false; 
-                }
+                if (!isGrabbing) boxRb.mass = isRedActive ? 10f : 1000f; 
+                pushing = true;
+                if (!isGrabbing) currentBoxToGrab = boxRb;
             }
         }
         else if (col.gameObject.CompareTag("Pushable"))
         {
             pushing = true;
+            if (!isGrabbing) currentBoxToGrab = col.gameObject.GetComponent<Rigidbody2D>();
         }
     }
 
@@ -577,7 +610,16 @@ public class PlayerMovements : MonoBehaviour
             if (col.gameObject.CompareTag("HeavyPushable"))
             {
                 Rigidbody2D boxRb = col.gameObject.GetComponent<Rigidbody2D>();
-                if(boxRb) boxRb.mass = 1000f;
+                if (boxRb != null && (!isGrabbing || grabJoint.connectedBody != boxRb))
+                {
+                    boxRb.mass = 1000f;
+                }
+            }
+
+            // --- BUG FIX: Tanggalin sa isip ni Liyab ang box kapag hindi na sila magkadikit ---
+            if (currentBoxToGrab != null && col.gameObject == currentBoxToGrab.gameObject)
+            {
+                currentBoxToGrab = null;
             }
         }
     }
@@ -589,9 +631,7 @@ public class PlayerMovements : MonoBehaviour
 
     void CheckGroundAndPush(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Floor") || 
-            col.gameObject.CompareTag("Pushable") || 
-            col.gameObject.CompareTag("HeavyPushable")) 
+        if (col.gameObject.CompareTag("Floor") || col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable")) 
         {
             isGrounded = true;
         }
@@ -614,25 +654,14 @@ public class PlayerMovements : MonoBehaviour
         float invulnerableDuration = 3f; 
         float flickerInterval = 0.15f; 
         float timer = 0f;
-
         Color c = rend.material.color;
 
         while (timer < invulnerableDuration)
         {
-            c.a = 0.2f; 
-            rend.material.color = c;
-            yield return new WaitForSeconds(flickerInterval);
-
-            c.a = 1f; 
-            rend.material.color = c;
-            yield return new WaitForSeconds(flickerInterval);
-
+            c.a = 0.2f; rend.material.color = c; yield return new WaitForSeconds(flickerInterval);
+            c.a = 1f; rend.material.color = c; yield return new WaitForSeconds(flickerInterval);
             timer += flickerInterval * 2;
-
-            if (timer >= 0.5f && DamageEffect != null && DamageEffect.activeSelf)
-            {
-                DamageEffect.SetActive(false);
-            }
+            if (timer >= 0.5f && DamageEffect != null && DamageEffect.activeSelf) DamageEffect.SetActive(false);
         }
 
         Physics2D.IgnoreLayerCollision(7, 8, false); 
