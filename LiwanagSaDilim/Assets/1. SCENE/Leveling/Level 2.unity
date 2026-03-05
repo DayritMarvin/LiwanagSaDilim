@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4862038736783294240, guid: d9aa3a87491034749bfa49c5b86ce8a7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5796947376790259042, guid: d9aa3a87491034749bfa49c5b86ce8a7, type: 3}
       propertyPath: m_Name
       value: HeavyRock (1)
@@ -2432,6 +2436,14 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 1938817238655109555, guid: 0082248eb5d5f164a8cd931ed0721e04, type: 3}
+      propertyPath: m_Size.y
+      value: 4.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938817238655109555, guid: 0082248eb5d5f164a8cd931ed0721e04, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2912043700236481404, guid: 0082248eb5d5f164a8cd931ed0721e04, type: 3}
       propertyPath: m_Name
       value: blurgrassfront
@@ -4424,6 +4436,10 @@ PrefabInstance:
       value: 12.7
       objectReference: {fileID: 0}
     - target: {fileID: 1861418924542366038, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397255309071781471, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
