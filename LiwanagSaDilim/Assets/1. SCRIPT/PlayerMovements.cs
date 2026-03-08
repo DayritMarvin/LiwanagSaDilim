@@ -72,9 +72,10 @@ public class PlayerMovements : MonoBehaviour
 
     [Header("--- GREEN POWER (DASH) ---")]
     public GameObject dashButton; 
+    public GameObject greenButton;
     public float dashSpeed = 15f;     
     public float dashDuration = 0.2f; 
-    public float dashCooldown = 1f;   
+    public float dashCooldown = 1f; 
     [HideInInspector] public bool isGreenActive = false;
     private bool isDashing = false;   
     private bool canDash = true;      
@@ -422,7 +423,9 @@ public class PlayerMovements : MonoBehaviour
         isGreenActive = currentPower == PowerUpType.Green;
         isRedActive = currentPower == PowerUpType.Red;
 
+        // --- ITO ANG NAGPAPALIT SA G AT D BUTTONS ---
         if (dashButton != null) dashButton.SetActive(currentPower == PowerUpType.Green);
+        if (greenButton != null) greenButton.SetActive(currentPower != PowerUpType.Green);
     }
 
     void UpdateFireflyColors()
@@ -603,6 +606,13 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D col)
     {
+        // --- BAGO: Katulad ng E button, kalimutan ang pagtalon kapag umalis sa lapag ---
+        if (col.gameObject.CompareTag("Floor") || col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable"))
+        {
+            isGrounded = false;
+        }
+
+        // --- DATING CODE MO PARA SA MGA BOX (Walang binago) ---
         if (col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable"))
         {
             pushing = false;
@@ -616,7 +626,6 @@ public class PlayerMovements : MonoBehaviour
                 }
             }
 
-            // --- BUG FIX: Tanggalin sa isip ni Liyab ang box kapag hindi na sila magkadikit ---
             if (currentBoxToGrab != null && col.gameObject == currentBoxToGrab.gameObject)
             {
                 currentBoxToGrab = null;
