@@ -17,39 +17,39 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         // 1. I-apply ang saved settings pag-start ng game
-        // "1" means ON, "0" means OFF. Default is 1.
-        bool bgmOn = PlayerPrefs.GetInt("BGM_Active", 1) == 1;
-        bool sfxOn = PlayerPrefs.GetInt("SFX_Active", 1) == 1;
+        // Float na ang gagamitin natin para sa Slider (0.0f hanggang 1.0f)
+        float bgmVolume = PlayerPrefs.GetFloat("BGM_Volume", 1f);
+        float sfxVolume = PlayerPrefs.GetFloat("SFX_Volume", 1f);
 
-        BGMSource.mute = !bgmOn; // Kung bgmOn is true, mute is false
-        SFXSource.mute = !sfxOn;
+        BGMSource.volume = bgmVolume; 
+        SFXSource.volume = sfxVolume;
 
         // 2. Play Background Music
         if (background != null)
         {
             BGMSource.clip = background;
-            BGMSource.loop = true; // Siguraduhing naka-loop ang BGM
+            BGMSource.loop = true; 
             BGMSource.Play();
         }
     }
 
-    // --- NEW: FUNCTION PARA SA TOGGLES ---
+    // --- BAGO: FUNCTION PARA SA SLIDERS ---
     
-    public void ToggleBGM(bool isOn)
+    public void SetBGMVolume(float volume)
     {
-        BGMSource.mute = !isOn;
-        PlayerPrefs.SetInt("BGM_Active", isOn ? 1 : 0); // Save sa memory
+        BGMSource.volume = volume;
+        PlayerPrefs.SetFloat("BGM_Volume", volume); // Save sa memory
         PlayerPrefs.Save();
     }
 
-    public void ToggleSFX(bool isOn)
+    public void SetSFXVolume(float volume)
     {
-        SFXSource.mute = !isOn;
-        PlayerPrefs.SetInt("SFX_Active", isOn ? 1 : 0); // Save sa memory
+        SFXSource.volume = volume;
+        PlayerPrefs.SetFloat("SFX_Volume", volume); // Save sa memory
         PlayerPrefs.Save();
     }
 
-    // --- EXISTING LOGIC MO (Walang binago sa function, pero controlled na ng mute) ---
+    // --- EXISTING LOGIC MO ---
 
     public void PlaySFX(AudioClip clip)
     {
@@ -60,15 +60,12 @@ public class SoundManager : MonoBehaviour
     {
         if (SFXSource != null && jump != null)
         {
-            // Note: PlayOneShot mas maganda para hindi maputol ang walk sound, 
-            // pero stick muna tayo sa logic mo kung ito gusto mo.
             SFXSource.PlayOneShot(jump); 
         }
     }
 
     public void PlayWalkSound()
     {
-        // Play lang kung hindi pa nagpe-play ang walk para iwas overlapping
         if (SFXSource.clip != walk || !SFXSource.isPlaying)
         {
             SFXSource.clip = walk;
@@ -82,7 +79,7 @@ public class SoundManager : MonoBehaviour
         if (SFXSource.clip == walk && SFXSource.isPlaying)
         {
             SFXSource.Stop();
-            SFXSource.loop = false; // Reset loop
+            SFXSource.loop = false; 
             SFXSource.clip = null;
         }
     }

@@ -10,16 +10,18 @@ GameObject:
   m_Component:
   - component: {fileID: 2768003846107787882}
   - component: {fileID: 2875017906726728739}
+  - component: {fileID: 8288558386969205758}
   - component: {fileID: 6067237209494300886}
   - component: {fileID: 4102149037133614466}
   - component: {fileID: 7147709260563837211}
   - component: {fileID: 2270044820988226707}
   - component: {fileID: 2771545681841691233}
+  - component: {fileID: 1705559612426378294}
   - component: {fileID: 2154170269609099817}
   - component: {fileID: 8914316253193583715}
   - component: {fileID: 1426273229023870108}
   - component: {fileID: 2415783077047385127}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Liyab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -99,6 +101,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8288558386969205758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144318889072391190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee052c4fa4dc514da095bb715f11873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openAiApiKey: 
+  modelName: whisper-1
+  segmentDuration: 4
+  voiceDb:
+    wakeWord: go
+    mappings:
+    - power: 1
+      keywords:
+      - Blue
+      - Blu
+      - blew
+      - boo
+    - power: 2
+      keywords:
+      - green
+      - grin
+    - power: 3
+      keywords:
+      - red
+      - read
+      - rid
+      - rhed
 --- !u!61 &6067237209494300886
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -224,22 +260,61 @@ MonoBehaviour:
   HealthEffect: {fileID: 0}
   speedMovement: 4.93
   jumpForce: 10
-  maxLives: 10
+  jumpCooldown: 1
+  maxLives: 5
   playerLight: {fileID: 0}
   maxLightRadius: 5
   maxLightIntensity: 1.5
+  followingFireflies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  originalFireflyColor: {r: 1, g: 0.9, b: 0.2, a: 1}
+  redPowerColor: {r: 1, g: 0, b: 0, a: 1}
+  greenPowerColor: {r: 0, g: 1, b: 0, a: 1}
+  bluePowerColor: {r: 0, g: 0.0042738914, b: 1, a: 1}
   damaged: 0
-  blueIndicator: {fileID: 0}
-  greenIndicator: {fileID: 0}
+  isBlueActive: 0
   dashButton: {fileID: 0}
-  dashSpeed: 15
+  dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 1
-  redIndicator: {fileID: 0}
+  isGreenActive: 0
+  isRedActive: 0
   currentPower: 0
+  movementControlType: 0
+  ButtonUi:
+  - {fileID: 0}
+  AiUi:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  controlDropdown: {fileID: 0}
+  blueCooldown: {fileID: 0}
+  greenCooldown: {fileID: 0}
+  redCooldown: {fileID: 0}
+  interactKey: 101
+  interactHeld: 0
+--- !u!114 &1705559612426378294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144318889072391190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7058cd2082c29e14888e450ebbf4926c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redIndicator: {fileID: 0}
+  blueIndicator: {fileID: 0}
+  greenIndicator: {fileID: 0}
+  redButton: {fileID: 0}
   blueButton: {fileID: 0}
   greenButton: {fileID: 0}
-  redButton: {fileID: 0}
 --- !u!114 &2154170269609099817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +468,7 @@ GameObject:
   - component: {fileID: 5831558450900796517}
   - component: {fileID: 1764466613274231395}
   - component: {fileID: 8660625373573801515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Life4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +507,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.94160914, b: 0.2783019, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -451,7 +526,7 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
+  m_PointLightInnerAngle: 290
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 4
   m_PointLightOuterRadius: 5
@@ -492,7 +567,7 @@ GameObject:
   - component: {fileID: 8422285438731822201}
   - component: {fileID: 1109663757594090135}
   - component: {fileID: 1198017095124673970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Life1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +606,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.94160914, b: 0.2783019, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -550,7 +625,7 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 290.17456
+  m_PointLightInnerAngle: 290
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1
   m_PointLightOuterRadius: 2
@@ -591,7 +666,7 @@ GameObject:
   - component: {fileID: 8380417485776222769}
   - component: {fileID: 8107472690388971921}
   - component: {fileID: 8487731238691470957}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Life3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +705,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.94160914, b: 0.2783019, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -649,10 +724,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
+  m_PointLightInnerAngle: 290
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 3.76
-  m_PointLightOuterRadius: 5.54
+  m_PointLightInnerRadius: 3
+  m_PointLightOuterRadius: 4
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -689,7 +764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8157789445039037222}
   - component: {fileID: 6197544622008588900}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +780,7 @@ Transform:
   m_GameObject: {fileID: 4898300407669900120}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.48, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0.17, y: -0, z: 0}
   m_LocalScale: {x: 2.6227446, y: 2.6227446, z: 2.6227446}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -772,7 +847,7 @@ GameObject:
   - component: {fileID: 1164836413689118747}
   - component: {fileID: 2364537765123468902}
   - component: {fileID: 1072619104373464379}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Life5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,9 +905,9 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
+  m_PointLightInnerAngle: 290
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 4
+  m_PointLightInnerRadius: 5
   m_PointLightOuterRadius: 6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -871,7 +946,7 @@ GameObject:
   - component: {fileID: 3495276820779153896}
   - component: {fileID: 276309199067924644}
   - component: {fileID: 1665397309130320117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Life2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +985,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.94160914, b: 0.2783019, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -929,7 +1004,7 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
+  m_PointLightInnerAngle: 290.1258
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 2
   m_PointLightOuterRadius: 3
