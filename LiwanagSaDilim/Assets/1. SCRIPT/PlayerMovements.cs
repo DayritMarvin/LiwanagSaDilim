@@ -108,7 +108,16 @@ public class PlayerMovements : MonoBehaviour
     private Rigidbody2D currentBoxToGrab; 
     private FixedJoint2D grabJoint;       
     private bool isGrabbing = false;
-    [HideInInspector] public bool interactHeld = false; 
+    [HideInInspector] public bool interactHeld = false;
+    public bool hasPushable = false;
+    [SerializeField] float pushDistance = 1f;
+    [SerializeField] LayerMask pushableLayer;
+    #endregion
+
+    #region IMPROVED MOVEMENT LOGIC
+    [Header("Improved Movement Logic")]
+    public LayerMask groundLayer;
+    public float groundCheckDistance = 0.1f;
     #endregion
 
     // ---------------------------------------------------------
@@ -154,6 +163,7 @@ public class PlayerMovements : MonoBehaviour
             return; 
         }
 
+
         if (isDying)
         {
             HandleDeath();
@@ -169,12 +179,15 @@ public class PlayerMovements : MonoBehaviour
         UpdateAnimations();
 
         if (lives <= 0 && !isDying) isDying = true;
+
+
     }
 
     void FixedUpdate()
     {
         if (isDying) return; 
         MovementImprovement();
+        HandlePushing();
     }
 
     void LateUpdate()
@@ -225,7 +238,7 @@ public class PlayerMovements : MonoBehaviour
             PerformJump();
             doubleJumpUsed = false; 
         }
-        else if (isBlueActive && !doubleJumpUsed)
+        else if (isBlueActive && !doubleJumpUsed && !isGrounded)
         {
             PerformJump();
             doubleJumpUsed = true; 
@@ -238,12 +251,16 @@ public class PlayerMovements : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0); 
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         anim.SetTrigger("jump");
-        isGrounded = false;
+        //isGrounded = false;
         StartCoroutine(JumpCooldownRoutine());
     }
 
     void MovementImprovement()
-    {
+    {   
+        //eto na yung sa ground gamit ang raycast para mas accurate yung pagdetect ng ground
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
+        Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.red);
+
         if (isDashing) return;
         horizontalInput = Mathf.Clamp(horizontalInput, -1f, 1f);
         rb.velocity = new Vector2(horizontalInput * speedMovement, rb.velocity.y);
@@ -514,33 +531,82 @@ public class PlayerMovements : MonoBehaviour
     public void ButtonMove(int val) {mobileInput = val;}
 
     // --- BAGO: Updated HandleGrabbing para sa Heavy Boxes ---
+
+    //Instead of using collision, use raycast
+    void HandlePushing()
+    {
+        hasPushable = Physics2D.Raycast(transform.position, transform.right, pushDistance, pushableLayer);
+        if(hasPushable)
+        {
+            if(isGrabbing)return;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, pushDistance, pushableLayer);
+            Rigidbody2D boxRb = hit.transform.GetComponent<Rigidbody2D>();
+            if (boxRb != null)
+            {
+                if (hit.transform.CompareTag("HeavyPushable"))
+                {
+                    boxRb.mass = isRedActive ? 10f : 1000f;
+                    pushing = true;
+                }
+                else
+                {
+                    pushing = true;
+                }
+                currentBoxToGrab = boxRb;
+            }
+        }
+        else
+        {
+            currentBoxToGrab = null;
+            pushing = false;
+        }
+        Debug.DrawRay(transform.position, transform.right * pushDistance, Color.blue);
+    }
+
     void HandleGrabbing()
     {
+        if(currentBoxToGrab == null) return;
         bool tryingToGrab = Input.GetKey(interactKey) || interactHeld;
 
         if (tryingToGrab)
         {
-            if (!isGrabbing && currentBoxToGrab != null)
+            if (!isGrabbing)
             {
-                if (currentBoxToGrab.gameObject.CompareTag("HeavyPushable") && !isRedActive)
-                {
-                    return; 
-                }
+                // if (currentBoxToGrab.gameObject.CompareTag("HeavyPushable"))
+                // {
+                //     rb.constraints = isRedActive ? RigidbodyConstraints2D.FreezeRotation : RigidbodyConstraints2D.FreezeAll;
+                // }
+                // else
+                // {
+                //     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                // }
 
                 grabJoint.connectedBody = currentBoxToGrab;
                 grabJoint.enabled = true;
                 isGrabbing = true;
+            }
+            else
+            {
+                if (currentBoxToGrab.gameObject.CompareTag("HeavyPushable"))
+                {
+                    rb.constraints = isRedActive ? RigidbodyConstraints2D.FreezeRotation : RigidbodyConstraints2D.FreezeAll;
+                }
+                else
+                {
+                    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                }
             }
         }
         else
         {
             if (isGrabbing)
             {
-                if (grabJoint.connectedBody != null && grabJoint.connectedBody.gameObject.CompareTag("HeavyPushable"))
-                {
-                    grabJoint.connectedBody.mass = 1000f;
-                }
-
+                //Tinanggal ko muna kasi di naman kailangan
+                // if (grabJoint.connectedBody != null && grabJoint.connectedBody.gameObject.CompareTag("HeavyPushable"))
+                // {
+                //     grabJoint.connectedBody.mass = 1000f;
+                // }
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 grabJoint.enabled = false;
                 grabJoint.connectedBody = null;
                 isGrabbing = false;
@@ -551,23 +617,24 @@ public class PlayerMovements : MonoBehaviour
         }
 
         // Kapag naubos ang Red Power habang humahatak
-        if (isGrabbing && grabJoint.connectedBody != null && grabJoint.connectedBody.gameObject.CompareTag("HeavyPushable"))
-        {
-            if (isRedActive)
-            {
-                grabJoint.connectedBody.mass = 10f; 
-            }
-            else
-            {
-                grabJoint.connectedBody.mass = 1000f;
-                grabJoint.enabled = false;
-                grabJoint.connectedBody = null;
-                isGrabbing = false;
+        //Tinanggal ko muna kasi hindi naman na kailangan
+        // if (isGrabbing && grabJoint.connectedBody != null && grabJoint.connectedBody.gameObject.CompareTag("HeavyPushable"))
+        // {
+        //     if (isRedActive)
+        //     {
+        //         grabJoint.connectedBody.mass = 10f; 
+        //     }
+        //     else
+        //     {
+        //         grabJoint.connectedBody.mass = 1000f;
+        //         grabJoint.enabled = false;
+        //         grabJoint.connectedBody = null;
+        //         isGrabbing = false;
                 
-                // --- BUG FIX: Kalimutan din ang box kapag na-force bitaw ---
-                currentBoxToGrab = null;
-            }
-        }
+        //         // --- BUG FIX: Kalimutan din ang box kapag na-force bitaw ---
+        //         currentBoxToGrab = null;
+        //     }
+        // }
     }
 
     public void InteractHoldDown() { interactHeld = true; }
@@ -587,50 +654,53 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("HeavyPushable"))
-        {
-            Rigidbody2D boxRb = col.gameObject.GetComponent<Rigidbody2D>();
-            if (boxRb != null)
-            {
-                if (!isGrabbing) boxRb.mass = isRedActive ? 10f : 1000f; 
-                pushing = true;
-                if (!isGrabbing) currentBoxToGrab = boxRb;
-            }
-        }
-        else if (col.gameObject.CompareTag("Pushable"))
-        {
-            pushing = true;
-            if (!isGrabbing) currentBoxToGrab = col.gameObject.GetComponent<Rigidbody2D>();
-        }
+        //Nilipat na sa HandlePushing na method para mas malinis
+
+        // if (col.gameObject.CompareTag("HeavyPushable"))
+        // {
+        //     Rigidbody2D boxRb = col.gameObject.GetComponent<Rigidbody2D>();
+        //     if (boxRb != null)
+        //     {
+        //         if (!isGrabbing) boxRb.mass = isRedActive ? 10f : 1000f; 
+        //         pushing = true;
+        //         if (!isGrabbing) currentBoxToGrab = boxRb;
+        //     }
+        // }
+        // else if (col.gameObject.CompareTag("Pushable"))
+        // {
+        //     pushing = true;
+        //     if (!isGrabbing) currentBoxToGrab = col.gameObject.GetComponent<Rigidbody2D>();
+        // }
     }
 
     private void OnCollisionExit2D(Collision2D col)
     {
         // --- BAGO: Katulad ng E button, kalimutan ang pagtalon kapag umalis sa lapag ---
-        if (col.gameObject.CompareTag("Floor") || col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable"))
-        {
-            isGrounded = false;
-        }
+        //tinanggal na para mas maganda ang pagtalon kahit na nasa gilid lang ng platform, at para hindi ma-reset yung jump cooldown kapag umalis sa lapag habang tumatalon
+        // if (col.gameObject.CompareTag("Floor") || col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable"))
+        // {
+        //     isGrounded = false;
+        // }
 
         // --- DATING CODE MO PARA SA MGA BOX (Walang binago) ---
-        if (col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable"))
-        {
-            pushing = false;
+        // if (col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable"))
+        // {
+        //     pushing = false;
             
-            if (col.gameObject.CompareTag("HeavyPushable"))
-            {
-                Rigidbody2D boxRb = col.gameObject.GetComponent<Rigidbody2D>();
-                if (boxRb != null && (!isGrabbing || grabJoint.connectedBody != boxRb))
-                {
-                    boxRb.mass = 1000f;
-                }
-            }
+        //     if (col.gameObject.CompareTag("HeavyPushable"))
+        //     {
+        //         Rigidbody2D boxRb = col.gameObject.GetComponent<Rigidbody2D>();
+        //         if (boxRb != null && (!isGrabbing || grabJoint.connectedBody != boxRb))
+        //         {
+        //             boxRb.mass = 1000f;
+        //         }
+        //     }
 
-            if (currentBoxToGrab != null && col.gameObject == currentBoxToGrab.gameObject)
-            {
-                currentBoxToGrab = null;
-            }
-        }
+        //     if (currentBoxToGrab != null && col.gameObject == currentBoxToGrab.gameObject)
+        //     {
+        //         currentBoxToGrab = null;
+        //     }
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -638,11 +708,12 @@ public class PlayerMovements : MonoBehaviour
         if (col.gameObject.CompareTag("Death")) { lives = 0; UpdateLight(); }
     }
 
+    //hindi na nagamit kasi raycast na pang detect ng ground
     void CheckGroundAndPush(Collision2D col)
     {
         if (col.gameObject.CompareTag("Floor") || col.gameObject.CompareTag("Pushable") || col.gameObject.CompareTag("HeavyPushable")) 
         {
-            isGrounded = true;
+            //isGrounded = true;
         }
     }
     #endregion

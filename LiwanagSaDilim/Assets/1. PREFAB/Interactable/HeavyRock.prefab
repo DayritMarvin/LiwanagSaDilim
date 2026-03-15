@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4862038736783294240}
   - component: {fileID: 2254209742657712679}
   - component: {fileID: 2047862694170273682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HeavyRock
   m_TagString: HeavyPushable
   m_Icon: {fileID: 0}
