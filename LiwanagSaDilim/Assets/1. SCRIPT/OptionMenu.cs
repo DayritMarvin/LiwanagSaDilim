@@ -1,42 +1,128 @@
 using UnityEngine;
-using UnityEngine.UI; // Importante para sa Toggle
+using UnityEngine.UI; 
+using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public Toggle bgmToggle; // I-drag ang BGM Checkbox dito
-    public Toggle sfxToggle; // I-drag ang SFX Checkbox dito
-    
-    public SoundManager soundManager; // I-drag ang SoundManager object dito
+    [Header("--- AUDIO SETTINGS ---")]
+    public Slider bgmSlider; 
+    public Slider sfxSlider; 
+    public SoundManager soundManager; 
+
+    [Header("--- VISUAL SETTINGS ---")]
+    public Slider brightnessSlider; 
+    public Slider contrastSlider;   
+    public Volume globalVolume;     
+
+    [Header("--- VALUE TEXT DISPLAYS (0-100) ---")]
+    public TMP_Text bgmTextValue;
+    public TMP_Text sfxTextValue;
+    public TMP_Text brightnessTextValue;
+    public TMP_Text contrastTextValue;
+
+    private ColorAdjustments colorAdjustments;
 
     void Start()
     {
-        // 1. Hanapin ang SoundManager kung hindi na-drag
         if (soundManager == null)
             soundManager = FindObjectOfType<SoundManager>();
 
-        // 2. Kunin ang saved data para i-update ang UI visual (Check/Uncheck)
-        bool isBGMOn = PlayerPrefs.GetInt("BGM_Active", 1) == 1;
-        bool isSFXOn = PlayerPrefs.GetInt("SFX_Active", 1) == 1;
+        // --- 1. SETUP AUDIO SLIDERS ---
+        float savedBGM = PlayerPrefs.GetFloat("BGM_Volume", 1f);
+        float savedSFX = PlayerPrefs.GetFloat("SFX_Volume", 1f);
 
-        // 3. I-set ang Toggles visual nang hindi nagti-trigger ng sound glitch
-        // SetIsOnWithoutNotify para lang mabago ang itsura pero di tatawagin ang function agad
-        if (bgmToggle != null) bgmToggle.SetIsOnWithoutNotify(isBGMOn);
-        if (sfxToggle != null) sfxToggle.SetIsOnWithoutNotify(isSFXOn);
+        if (bgmSlider != null)
+        {
+            bgmSlider.SetValueWithoutNotify(savedBGM);
+            bgmSlider.onValueChanged.AddListener(OnBGMSliderChanged);
+            UpdateTextValue(bgmTextValue, savedBGM, 0f, 1f);
+        }
+        if (sfxSlider != null)
+        {
+            sfxSlider.SetValueWithoutNotify(savedSFX);
+            sfxSlider.onValueChanged.AddListener(OnSFXSliderChanged);
+            UpdateTextValue(sfxTextValue, savedSFX, 0f, 1f);
+        }
 
-        // 4. Mag-subscribe sa events (Para pag pinindot, gagana)
-        if (bgmToggle != null) bgmToggle.onValueChanged.AddListener(OnBGMToggleChanged);
-        if (sfxToggle != null) sfxToggle.onValueChanged.AddListener(OnSFXToggleChanged);
+        // --- 2. SETUP VISUAL SLIDERS (URP) ---
+        if (globalVolume != null)
+        {
+            globalVolume.profile.TryGet(out colorAdjustments);
+        }
+
+        float savedBrightness = PlayerPrefs.GetFloat("Brightness", 0f); 
+        float savedContrast = PlayerPrefs.GetFloat("Contrast", 0f);
+
+        if (brightnessSlider != null)
+        {
+            brightnessSlider.SetValueWithoutNotify(savedBrightness);
+            brightnessSlider.onValueChanged.AddListener(OnBrightnessChanged);
+            ApplyBrightness(savedBrightness);
+            UpdateTextValue(brightnessTextValue, savedBrightness, -2f, 2f);
+        }
+        if (contrastSlider != null)
+        {
+            contrastSlider.SetValueWithoutNotify(savedContrast);
+            contrastSlider.onValueChanged.AddListener(OnContrastChanged);
+            ApplyContrast(savedContrast);
+            UpdateTextValue(contrastTextValue, savedContrast, -50f, 50f);
+        }
     }
 
-    // Ito ang tatawagin kapag pinindot ang BGM Checkbox
-    public void OnBGMToggleChanged(bool isOn)
+    // --- AUDIO FUNCTIONS ---
+    public void OnBGMSliderChanged(float value)
     {
-        if (soundManager != null) soundManager.ToggleBGM(isOn);
+        if (soundManager != null) soundManager.SetBGMVolume(value);
+        UpdateTextValue(bgmTextValue, value, 0f, 1f);
     }
 
-    // Ito ang tatawagin kapag pinindot ang SFX Checkbox
-    public void OnSFXToggleChanged(bool isOn)
+    public void OnSFXSliderChanged(float value)
     {
-        if (soundManager != null) soundManager.ToggleSFX(isOn);
+        if (soundManager != null) soundManager.SetSFXVolume(value);
+        UpdateTextValue(sfxTextValue, value, 0f, 1f);
+    }
+
+    // --- VISUAL FUNCTIONS ---
+    public void OnBrightnessChanged(float value)
+    {
+        ApplyBrightness(value);
+        PlayerPrefs.SetFloat("Brightness", value);
+        PlayerPrefs.Save();
+        UpdateTextValue(brightnessTextValue, value, -2f, 2f);
+    }
+
+    public void OnContrastChanged(float value)
+    {
+        ApplyContrast(value);
+        PlayerPrefs.SetFloat("Contrast", value);
+        PlayerPrefs.Save();
+        UpdateTextValue(contrastTextValue, value, -50f, 50f);
+    }
+
+    private void ApplyBrightness(float value)
+    {
+        if (colorAdjustments != null)
+        {
+            colorAdjustments.postExposure.Override(value);
+        }
+    }
+
+    private void ApplyContrast(float value)
+    {
+        if (colorAdjustments != null)
+        {
+            colorAdjustments.contrast.Override(value);
+        }
+    }
+
+    private void UpdateTextValue(TMP_Text textComponent, float value, float min, float max)
+    {
+        if (textComponent != null)
+        {
+            float percentage = Mathf.InverseLerp(min, max, value) * 100f;
+            textComponent.text = Mathf.RoundToInt(percentage).ToString(); 
+        }
     }
 }

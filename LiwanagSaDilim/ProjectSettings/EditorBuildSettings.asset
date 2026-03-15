@@ -8,19 +8,31 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/1. SCENE/IntroSetup.unity
     guid: a74d9fb8caaf86e43b63d3b3b4b19a67
-  - enabled: 0
+  - enabled: 1
     path: Assets/1. SCENE/MainMenu.unity
     guid: 9fca3830ac4f8c7499ed216b7aed4556
-  - enabled: 0
+  - enabled: 1
+    path: Assets/1. SCENE/LevelMenu.unity
+    guid: 18547ff639a7cee4899939a6939affd8
+  - enabled: 1
     path: Assets/1. SCENE/MainStory.unity
     guid: 0394631ebee7cd34daba04992105a2ca
   - enabled: 1
     path: Assets/1. SCENE/Leveling/Level 1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/1. SCENE/LevelMenu.unity
-    guid: 18547ff639a7cee4899939a6939affd8
-  - enabled: 0
+    guid: ef7587ae85fabb54e8717cec11d47fab
+  - enabled: 1
     path: Assets/1. SCENE/Leveling/Level 2.unity
-    guid: 8aeb05e119c266e4cb11427fbe6aa4f8
+    guid: be074da2b8f4ec74aac9f2bd0679cf3e
+  - enabled: 1
+    path: Assets/1. SCENE/Leveling/Level 3.unity
+    guid: f051ea678934a7941a4c9af8db69323a
+  - enabled: 1
+    path: Assets/1. SCENE/Leveling/Level 4.unity
+    guid: ce5901bc09e7ef54384017e158d0ebf7
+  - enabled: 1
+    path: Assets/1. SCENE/Leveling/Level 5.unity
+    guid: 70c7b8a62e9bed247bd3150eaa10d7ae
+  - enabled: 1
+    path: Assets/1. SCENE/Leveling/Level 6.unity
+    guid: 4f57a51dc6b60674fbd3b63872ab0259
   m_configObjects: {}
