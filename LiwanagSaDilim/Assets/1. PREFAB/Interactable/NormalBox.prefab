@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8375200122441589926}
   - component: {fileID: 6297268371349003832}
   - component: {fileID: 618480247955773538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NormalBox
   m_TagString: Pushable
   m_Icon: {fileID: 0}

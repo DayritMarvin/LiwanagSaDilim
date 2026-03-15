@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8643154311866881325}
   - component: {fileID: 7284015774684810039}
   - component: {fileID: 6216665650464059616}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle ROCK
   m_TagString: Pushable
   m_Icon: {fileID: 0}
