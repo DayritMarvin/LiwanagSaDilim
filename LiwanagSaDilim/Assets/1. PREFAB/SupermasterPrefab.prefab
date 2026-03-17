@@ -7682,6 +7682,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7990372619354463966}
     - target: {fileID: 2771545681841691233, guid: ff3a2ca6481ebcc41b31bd474b8467e5, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2771545681841691233, guid: ff3a2ca6481ebcc41b31bd474b8467e5, type: 3}
+      propertyPath: groundCheckDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2771545681841691233, guid: ff3a2ca6481ebcc41b31bd474b8467e5, type: 3}
+      propertyPath: pushableLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2771545681841691233, guid: ff3a2ca6481ebcc41b31bd474b8467e5, type: 3}
       propertyPath: ButtonUi.Array.data[0]
       value: 
       objectReference: {fileID: 1225328922889339189}
