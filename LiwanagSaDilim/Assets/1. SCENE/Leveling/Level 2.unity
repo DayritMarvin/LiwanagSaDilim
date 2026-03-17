@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946447919533265521, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2474140549754081488, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_Name
@@ -1035,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7546250895918761231, guid: 3e3aa1eab78b7624fbffd4ff1955eee6, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7873569296340696889, guid: 3e3aa1eab78b7624fbffd4ff1955eee6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1726,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946447919533265521, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2474140549754081488, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_Name
@@ -2928,7 +2928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946447919533265521, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2474140549754081488, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_Name
@@ -3229,7 +3229,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 48ecc34b08abed3499e6620d6df36db0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5620,7 +5620,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 224878630197058179, guid: ab614fe34311db749b52cd4906f9d66e, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1179683261969428196, guid: ab614fe34311db749b52cd4906f9d66e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6338,7 +6338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946447919533265521, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2474140549754081488, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_Name
