@@ -261,6 +261,8 @@ public class PlayerMovements : MonoBehaviour
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
         Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.red);
 
+
+
         if (isDashing) return;
         horizontalInput = Mathf.Clamp(horizontalInput, -1f, 1f);
         rb.velocity = new Vector2(horizontalInput * speedMovement, rb.velocity.y);
@@ -648,8 +650,8 @@ public class PlayerMovements : MonoBehaviour
     #region COLLISIONS
     private void OnCollisionEnter2D(Collision2D col)
     {
-        CheckGroundAndPush(col);
         if (col.gameObject.CompareTag("Enemy")) TakeDamage();
+        if (col.gameObject.CompareTag("Death")) { lives = 0; UpdateLight(); }
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -705,6 +707,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.CompareTag("Enemy")) TakeDamage();
         if (col.gameObject.CompareTag("Death")) { lives = 0; UpdateLight(); }
     }
 
