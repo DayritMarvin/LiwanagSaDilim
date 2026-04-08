@@ -194,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6810710409239473662, guid: 33253151837fa6a4fad60c3d9d3b57ab, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2193,6 +2193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 575407998}
     m_Modifications:
+    - target: {fileID: 920737401973093549, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.44
+      objectReference: {fileID: 0}
     - target: {fileID: 1071700889107213780, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: exitDoor
       value: 
@@ -4524,7 +4528,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20.35, y: 2.98}
+  m_Size: {x: 20.35, y: 2.81}
   m_EdgeRadius: 0
 --- !u!4 &1189718518 stripped
 Transform:
@@ -5930,7 +5934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946447919533265521, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2474140549754081488, guid: ca7e6553776652943a508cff29a8a9e6, type: 3}
       propertyPath: m_Name
@@ -7147,7 +7151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6810710409239473662, guid: 33253151837fa6a4fad60c3d9d3b57ab, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1098,6 +1098,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 920737401973093549, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1071700889107213780, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: exitDoor
       value: 
@@ -1173,6 +1177,10 @@ PrefabInstance:
     - target: {fileID: 7501459759799843790, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777217778580906741, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_ShowToolkit
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
