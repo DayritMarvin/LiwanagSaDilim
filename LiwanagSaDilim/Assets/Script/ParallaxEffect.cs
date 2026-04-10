@@ -10,10 +10,6 @@ public class ParallaxEffect : MonoBehaviour
     void Start()
     {
         startPos = transform.position.x;
-        if(cam == null)
-        {
-            cam = Camera.main.gameObject;
-        }
     }
 
     // Update is called once per frame
