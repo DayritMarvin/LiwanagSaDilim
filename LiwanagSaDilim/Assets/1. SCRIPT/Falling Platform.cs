@@ -20,7 +20,15 @@ public class FallingPlatform : MonoBehaviour
         // If the player landed on the platform, start falling
         if (collision.transform.tag == "Player")
         {
-            StartCoroutine(StartFall());
+            // ✅ ADDED: check if player is ABOVE
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                if (contact.normal.y < -0.5f)
+                {
+                    StartCoroutine(StartFall());
+                    break;
+                }
+            }
         }
     }
  

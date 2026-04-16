@@ -11,38 +11,30 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Box"))
-        {
-            objectsOnPlate++;
+        objectsOnPlate++;
 
-            if (objectsOnPlate == 1)
-            {
-                ActivatePlate();
-            }
+        if (objectsOnPlate == 1)
+        {
+            ActivatePlate();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Box"))
-        {
-            objectsOnPlate--;
+        objectsOnPlate--;
 
-            if (objectsOnPlate <= 0)
-            {
-                objectsOnPlate = 0;
-                DeactivatePlate();
-            }
+        if (objectsOnPlate <= 0)
+        {
+            objectsOnPlate = 0;
+            DeactivatePlate();
         }
     }
 
     private void ActivatePlate()
     {
-        // 🔽 Animate plate DOWN
         if (anim != null)
             anim.SetBool("Pressed", true);
 
-        // 🔥 Activate traps
         foreach (MonoBehaviour trap in traps)
         {
             if (trap != null)
@@ -54,11 +46,9 @@ public class PressurePlate : MonoBehaviour
 
     private void DeactivatePlate()
     {
-        // 🔼 Animate plate UP
         if (anim != null)
             anim.SetBool("Pressed", false);
 
-        // 🔥 Deactivate traps
         foreach (MonoBehaviour trap in traps)
         {
             if (trap != null)
