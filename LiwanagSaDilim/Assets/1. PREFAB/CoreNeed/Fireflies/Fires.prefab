@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4719883673657970898}
   - component: {fileID: 2819256954101869512}
   m_Layer: 0
-  m_Name: Red Firefly
+  m_Name: Fires
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
