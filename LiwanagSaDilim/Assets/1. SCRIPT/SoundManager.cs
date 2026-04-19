@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource BGMSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] public AudioSource SFXSource;
 
     [Header("--------- Audio Clip ---------")]
     public AudioClip background;
