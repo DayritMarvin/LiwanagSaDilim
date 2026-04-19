@@ -2198,6 +2198,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 233200607}
+    - target: {fileID: 1861418924542366038, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2493411078627110062, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
       propertyPath: cam
       value: 
@@ -24248,6 +24252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4380541278591430713, guid: c5edbd6c52a6e924e8fbb004eac18865, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4693054099766232249, guid: c5edbd6c52a6e924e8fbb004eac18865, type: 3}
       propertyPath: m_Name
       value: NewPortal
