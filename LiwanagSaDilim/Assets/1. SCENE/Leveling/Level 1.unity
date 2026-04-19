@@ -2193,10 +2193,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 575407998}
     m_Modifications:
-    - target: {fileID: 920737401973093549, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.44
-      objectReference: {fileID: 0}
     - target: {fileID: 1071700889107213780, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: exitDoor
       value: 
@@ -9122,6 +9118,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 978785341}
     m_Modifications:
+    - target: {fileID: 2108217428287621211, guid: c5edbd6c52a6e924e8fbb004eac18865, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3948146890487602496, guid: c5edbd6c52a6e924e8fbb004eac18865, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -9182,8 +9182,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 3416916672036909796, guid: c5edbd6c52a6e924e8fbb004eac18865, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 7771984450219848439, guid: c5edbd6c52a6e924e8fbb004eac18865, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5edbd6c52a6e924e8fbb004eac18865, type: 3}
