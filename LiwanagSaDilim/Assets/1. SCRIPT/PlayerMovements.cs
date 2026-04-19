@@ -11,8 +11,9 @@ public class PlayerMovements : MonoBehaviour
     #region 1. COMPONENTS & REFERENCES
     [Header("--- COMPONENTS ---")]
     private Rigidbody2D rb;
-    private Animator anim;
-    private Renderer rend;
+    [SerializeField] Animator anim;
+    [SerializeField] Transform playerObject;
+    [SerializeField]private Renderer rend;
     private Color originalColor;
     private LevelHandler levelHandler;
     private SoundManager audioManager;
@@ -135,8 +136,6 @@ public class PlayerMovements : MonoBehaviour
     void Start() 
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
         levelHandler = FindObjectOfType<LevelHandler>();
         voiceCommand = GetComponent<PlayerVoiceCommand>();
@@ -197,7 +196,7 @@ public class PlayerMovements : MonoBehaviour
             if ((horizontalInput < 0 && facingRight) || (horizontalInput > 0 && !facingRight))
             {
                 facingRight = !facingRight;
-                transform.Rotate(0f, 180f, 0f);
+                playerObject.Rotate(0f, 180f, 0f);
             }
         }
 
@@ -247,7 +246,8 @@ public class PlayerMovements : MonoBehaviour
 
     void PerformJump()
     {
-        if(audioManager) audioManager.PlayJumpSound();
+        if(audioManager)
+        audioManager.PlayJumpSound();
         rb.velocity = new Vector2(rb.velocity.x, 0); 
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         anim.SetTrigger("jump");
@@ -371,7 +371,7 @@ public class PlayerMovements : MonoBehaviour
 
         float originalGravity = rb.gravityScale; 
         rb.gravityScale = 0; 
-        rb.velocity = transform.right * dashSpeed;
+        rb.velocity = playerObject.right * dashSpeed;
         
         yield return new WaitForSeconds(dashDuration); 
         
@@ -537,11 +537,11 @@ public class PlayerMovements : MonoBehaviour
     //Instead of using collision, use raycast
     void HandlePushing()
     {
-        hasPushable = Physics2D.Raycast(transform.position, transform.right, pushDistance, pushableLayer);
+        hasPushable = Physics2D.Raycast(transform.position, playerObject.right, pushDistance, pushableLayer);
         if(hasPushable)
         {
             if(isGrabbing)return;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, pushDistance, pushableLayer);
+            RaycastHit2D hit = Physics2D.Raycast(playerObject.position, playerObject.right, pushDistance, pushableLayer);
             Rigidbody2D boxRb = hit.transform.GetComponent<Rigidbody2D>();
             if (boxRb != null)
             {
@@ -562,7 +562,7 @@ public class PlayerMovements : MonoBehaviour
             currentBoxToGrab = null;
             pushing = false;
         }
-        Debug.DrawRay(transform.position, transform.right * pushDistance, Color.blue);
+        Debug.DrawRay(playerObject.position, playerObject.right * pushDistance, Color.blue);
     }
 
     void HandleGrabbing()
