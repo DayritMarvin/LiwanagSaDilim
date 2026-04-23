@@ -330,7 +330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 8
+  m_text: 28
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -734,6 +734,7 @@ RectTransform:
   - {fileID: 1983031637}
   - {fileID: 454571783}
   - {fileID: 297818044}
+  - {fileID: 1782533665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1026,6 +1027,8 @@ MonoBehaviour:
   Fragments1: {fileID: 627479590}
   Fragments2: {fileID: 1238881407}
   Fragments3: {fileID: 1127689400}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &167061643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,7 +1137,7 @@ GameObject:
   - component: {fileID: 178883008}
   - component: {fileID: 178883007}
   m_Layer: 5
-  m_Name: LVL 3
+  m_Name: LVL 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1184,6 +1187,8 @@ MonoBehaviour:
   Fragments1: {fileID: 2090089694}
   Fragments2: {fileID: 1047393615}
   Fragments3: {fileID: 1474943995}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &178883008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1631,8 @@ MonoBehaviour:
   Fragments1: {fileID: 534744436}
   Fragments2: {fileID: 1219561101}
   Fragments3: {fileID: 2146341315}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &221392152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1859,6 +1866,8 @@ MonoBehaviour:
   Fragments1: {fileID: 957463569}
   Fragments2: {fileID: 456226040}
   Fragments3: {fileID: 1294182709}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &256468160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2135,6 +2144,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1878984361}
   Fragments2: {fileID: 2101922415}
   Fragments3: {fileID: 879416187}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &302437999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2505,7 +2516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 23
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -3046,7 +3057,7 @@ GameObject:
   - component: {fileID: 387132309}
   - component: {fileID: 387132308}
   m_Layer: 5
-  m_Name: LVL 8
+  m_Name: LVL 28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3096,6 +3107,8 @@ MonoBehaviour:
   Fragments1: {fileID: 697393406}
   Fragments2: {fileID: 728173269}
   Fragments3: {fileID: 101860861}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &387132309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3531,6 +3544,8 @@ MonoBehaviour:
   Fragments1: {fileID: 711494330}
   Fragments2: {fileID: 1643491834}
   Fragments3: {fileID: 391779695}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &408008140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3764,6 +3779,8 @@ MonoBehaviour:
   Fragments1: {fileID: 448696140}
   Fragments2: {fileID: 1574816995}
   Fragments3: {fileID: 347660490}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &414171843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4187,6 +4204,8 @@ MonoBehaviour:
   Fragments1: {fileID: 789892965}
   Fragments2: {fileID: 191271593}
   Fragments3: {fileID: 2044803885}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &457047506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4485,7 +4504,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 111892305}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: ChapterBack
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4493,6 +4512,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1782533667}
+        m_TargetAssemblyTypeName: LoadingScreen, Assembly-CSharp
+        m_MethodName: LoadSceneWithAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &459960126
@@ -4745,7 +4776,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 111892305}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: ChapterBack
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4753,6 +4784,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1782533667}
+        m_TargetAssemblyTypeName: LoadingScreen, Assembly-CSharp
+        m_MethodName: LoadSceneWithAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &492246999
@@ -5302,7 +5345,7 @@ GameObject:
   - component: {fileID: 526775875}
   - component: {fileID: 526775874}
   m_Layer: 5
-  m_Name: LVL 6
+  m_Name: LVL 26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5352,6 +5395,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1065461464}
   Fragments2: {fileID: 1622616208}
   Fragments3: {fileID: 2086951547}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &526775875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5939,7 +5984,7 @@ GameObject:
   - component: {fileID: 584900787}
   - component: {fileID: 584900786}
   m_Layer: 5
-  m_Name: LVL 1
+  m_Name: LVL 21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5989,6 +6034,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1753420145}
   Fragments2: {fileID: 317654917}
   Fragments3: {fileID: 339313247}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &584900787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7230,7 +7277,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 111892305}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: ChapterBack
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7238,6 +7285,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1782533667}
+        m_TargetAssemblyTypeName: LoadingScreen, Assembly-CSharp
+        m_MethodName: LoadSceneWithAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &729025718
@@ -7626,6 +7685,8 @@ MonoBehaviour:
   Fragments1: {fileID: 2062754278}
   Fragments2: {fileID: 1085993234}
   Fragments3: {fileID: 21451155}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &747222940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8071,7 +8132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -8363,7 +8424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9
+  m_text: 29
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -9222,6 +9283,8 @@ MonoBehaviour:
   Fragments1: {fileID: 982215507}
   Fragments2: {fileID: 2010595704}
   Fragments3: {fileID: 266634781}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!1 &897442233
 GameObject:
   m_ObjectHideFlags: 0
@@ -9286,6 +9349,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1048989629}
   Fragments2: {fileID: 579228155}
   Fragments3: {fileID: 1673596020}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &897442236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10297,6 +10362,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1136051059}
   Fragments2: {fileID: 1739050081}
   Fragments3: {fileID: 1048284240}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &991824146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10749,6 +10816,8 @@ MonoBehaviour:
   Fragments1: {fileID: 198247848}
   Fragments2: {fileID: 1367033371}
   Fragments3: {fileID: 689115112}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1012260376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10982,6 +11051,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1229890175}
   Fragments2: {fileID: 1554299871}
   Fragments3: {fileID: 976535606}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1015224997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12436,7 +12507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6
+  m_text: 26
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -12864,7 +12935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 24
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -13073,7 +13144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 22
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -13740,7 +13811,7 @@ GameObject:
   - component: {fileID: 1187482150}
   - component: {fileID: 1187482149}
   m_Layer: 5
-  m_Name: LVL 2
+  m_Name: LVL 22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13790,6 +13861,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1717798906}
   Fragments2: {fileID: 549520958}
   Fragments3: {fileID: 101738321}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1187482150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14956,7 +15029,7 @@ GameObject:
   - component: {fileID: 1344953307}
   - component: {fileID: 1344953306}
   m_Layer: 5
-  m_Name: LVL 9
+  m_Name: LVL 29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15006,6 +15079,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1446487746}
   Fragments2: {fileID: 744632752}
   Fragments3: {fileID: 1981974826}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1344953307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15564,7 +15639,7 @@ GameObject:
   - component: {fileID: 1418057042}
   - component: {fileID: 1418057041}
   m_Layer: 5
-  m_Name: LVL 10
+  m_Name: LVL 30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15614,6 +15689,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1478992350}
   Fragments2: {fileID: 644622345}
   Fragments3: {fileID: 1271266095}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1418057042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16559,6 +16636,8 @@ MonoBehaviour:
   Fragments1: {fileID: 614931251}
   Fragments2: {fileID: 1469982333}
   Fragments3: {fileID: 1604525795}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1495840391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17573,7 +17652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 25
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -17923,6 +18002,8 @@ MonoBehaviour:
   Fragments1: {fileID: 430390888}
   Fragments2: {fileID: 899407844}
   Fragments3: {fileID: 1013493228}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1606618367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19340,6 +19421,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1019267146}
   Fragments2: {fileID: 761112238}
   Fragments3: {fileID: 1045548783}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1716578477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19799,6 +19882,8 @@ MonoBehaviour:
   Fragments1: {fileID: 2101322557}
   Fragments2: {fileID: 1059650044}
   Fragments3: {fileID: 334532614}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1745696470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20088,6 +20173,128 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763251514}
   m_CullTransparentMesh: 1
+--- !u!1001 &1782533664
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 111892304}
+    m_Modifications:
+    - target: {fileID: 1077623389285961054, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_Name
+      value: LoadingManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731375024377861831, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+--- !u!224 &1782533665 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+  m_PrefabInstance: {fileID: 1782533664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1782533666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7731375024377861831, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+  m_PrefabInstance: {fileID: 1782533664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1782533667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7638912052042178090, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
+  m_PrefabInstance: {fileID: 1782533664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9849ea4bbb07f7b499cc3b2241c67bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1802877929
 GameObject:
   m_ObjectHideFlags: 0
@@ -21551,6 +21758,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1404464290}
   Fragments2: {fileID: 1931979558}
   Fragments3: {fileID: 1872764347}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1906330967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21709,6 +21918,8 @@ MonoBehaviour:
   Fragments1: {fileID: 935018547}
   Fragments2: {fileID: 1146826730}
   Fragments3: {fileID: 1712844635}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1906932571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22042,7 +22253,7 @@ GameObject:
   - component: {fileID: 1935027644}
   - component: {fileID: 1935027643}
   m_Layer: 5
-  m_Name: LVL 4
+  m_Name: LVL 24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22092,6 +22303,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1115089527}
   Fragments2: {fileID: 2077576561}
   Fragments3: {fileID: 1975037796}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &1935027644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22688,7 +22901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 7
+  m_text: 27
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -23047,7 +23260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 21
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
   m_sharedMaterial: {fileID: 2129677628521764372, guid: 8d998f2c5aa3f8e4093cb644dcec7383, type: 2}
@@ -23056,8 +23269,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -23363,7 +23576,7 @@ GameObject:
   - component: {fileID: 2089329237}
   - component: {fileID: 2089329236}
   m_Layer: 5
-  m_Name: LVL 5
+  m_Name: LVL 25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23413,6 +23626,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1666877868}
   Fragments2: {fileID: 1404940909}
   Fragments3: {fileID: 1959458661}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &2089329237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23799,7 +24014,7 @@ GameObject:
   - component: {fileID: 2113164216}
   - component: {fileID: 2113164215}
   m_Layer: 5
-  m_Name: LVL 7
+  m_Name: LVL 27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23849,6 +24064,8 @@ MonoBehaviour:
   Fragments1: {fileID: 2138376086}
   Fragments2: {fileID: 1907686797}
   Fragments3: {fileID: 637902029}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &2113164216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24232,6 +24449,8 @@ MonoBehaviour:
   Fragments1: {fileID: 1669188919}
   Fragments2: {fileID: 44668808}
   Fragments3: {fileID: 1479740411}
+  loadingPanel: {fileID: 1782533666}
+  minLoadTime: 1.5
 --- !u!114 &2133489475
 MonoBehaviour:
   m_ObjectHideFlags: 0

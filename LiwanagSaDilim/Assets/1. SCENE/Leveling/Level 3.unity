@@ -1335,7 +1335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2076030450037173812, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 660
+      value: -360.9
       objectReference: {fileID: 0}
     - target: {fileID: 2564652523744162922, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_Name
@@ -1359,6 +1359,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4023291587564427337, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056984367817626702, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7255833998112394860, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
