@@ -1023,7 +1023,7 @@ MonoBehaviour:
   levelText: {fileID: 1935534283}
   lockGameObject: {fileID: 1271113156}
   image: {fileID: 167061644}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 627479590}
   Fragments2: {fileID: 1238881407}
   Fragments3: {fileID: 1127689400}
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   levelText: {fileID: 327593513}
   lockGameObject: {fileID: 574204041}
   image: {fileID: 178883009}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 2090089694}
   Fragments2: {fileID: 1047393615}
   Fragments3: {fileID: 1474943995}
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   levelText: {fileID: 114939032}
   lockGameObject: {fileID: 363955658}
   image: {fileID: 221392153}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 534744436}
   Fragments2: {fileID: 1219561101}
   Fragments3: {fileID: 2146341315}
@@ -1862,7 +1862,7 @@ MonoBehaviour:
   levelText: {fileID: 1609770051}
   lockGameObject: {fileID: 1058743287}
   image: {fileID: 256468161}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 957463569}
   Fragments2: {fileID: 456226040}
   Fragments3: {fileID: 1294182709}
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   levelText: {fileID: 1888821790}
   lockGameObject: {fileID: 924126216}
   image: {fileID: 302438000}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1878984361}
   Fragments2: {fileID: 2101922415}
   Fragments3: {fileID: 879416187}
@@ -3103,7 +3103,7 @@ MonoBehaviour:
   levelText: {fileID: 54168469}
   lockGameObject: {fileID: 1836646194}
   image: {fileID: 387132310}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 697393406}
   Fragments2: {fileID: 728173269}
   Fragments3: {fileID: 101860861}
@@ -3540,7 +3540,7 @@ MonoBehaviour:
   levelText: {fileID: 1600598583}
   lockGameObject: {fileID: 1652752135}
   image: {fileID: 408008141}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 711494330}
   Fragments2: {fileID: 1643491834}
   Fragments3: {fileID: 391779695}
@@ -3775,7 +3775,7 @@ MonoBehaviour:
   levelText: {fileID: 1262667202}
   lockGameObject: {fileID: 877444137}
   image: {fileID: 414171844}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 448696140}
   Fragments2: {fileID: 1574816995}
   Fragments3: {fileID: 347660490}
@@ -4200,7 +4200,7 @@ MonoBehaviour:
   levelText: {fileID: 1802877931}
   lockGameObject: {fileID: 1157641404}
   image: {fileID: 457047507}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 789892965}
   Fragments2: {fileID: 191271593}
   Fragments3: {fileID: 2044803885}
@@ -5391,7 +5391,7 @@ MonoBehaviour:
   levelText: {fileID: 1099750300}
   lockGameObject: {fileID: 729461029}
   image: {fileID: 526775876}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1065461464}
   Fragments2: {fileID: 1622616208}
   Fragments3: {fileID: 2086951547}
@@ -6030,7 +6030,7 @@ MonoBehaviour:
   levelText: {fileID: 2058333908}
   lockGameObject: {fileID: 1847559201}
   image: {fileID: 584900788}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1753420145}
   Fragments2: {fileID: 317654917}
   Fragments3: {fileID: 339313247}
@@ -7681,7 +7681,7 @@ MonoBehaviour:
   levelText: {fileID: 393852736}
   lockGameObject: {fileID: 1813004010}
   image: {fileID: 747222941}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 2062754278}
   Fragments2: {fileID: 1085993234}
   Fragments3: {fileID: 21451155}
@@ -8011,6 +8011,7 @@ GameObject:
   - component: {fileID: 789892964}
   - component: {fileID: 789892966}
   - component: {fileID: 789892965}
+  - component: {fileID: 789892967}
   m_Layer: 5
   m_Name: Fragments1
   m_TagString: Untagged
@@ -8075,6 +8076,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789892963}
   m_CullTransparentMesh: 1
+--- !u!95 &789892967
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789892963}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e0d3395c8b566640813c893ebd00eea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &813518078
 GameObject:
   m_ObjectHideFlags: 0
@@ -9279,7 +9301,7 @@ MonoBehaviour:
   levelText: {fileID: 881605908}
   lockGameObject: {fileID: 154132427}
   image: {fileID: 895956415}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 982215507}
   Fragments2: {fileID: 2010595704}
   Fragments3: {fileID: 266634781}
@@ -9345,7 +9367,7 @@ MonoBehaviour:
   levelText: {fileID: 1580516499}
   lockGameObject: {fileID: 2141453860}
   image: {fileID: 897442237}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1048989629}
   Fragments2: {fileID: 579228155}
   Fragments3: {fileID: 1673596020}
@@ -10358,7 +10380,7 @@ MonoBehaviour:
   levelText: {fileID: 1508243331}
   lockGameObject: {fileID: 698777059}
   image: {fileID: 991824147}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1136051059}
   Fragments2: {fileID: 1739050081}
   Fragments3: {fileID: 1048284240}
@@ -10812,7 +10834,7 @@ MonoBehaviour:
   levelText: {fileID: 218668143}
   lockGameObject: {fileID: 635729782}
   image: {fileID: 1012260377}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 198247848}
   Fragments2: {fileID: 1367033371}
   Fragments3: {fileID: 689115112}
@@ -11047,7 +11069,7 @@ MonoBehaviour:
   levelText: {fileID: 548031461}
   lockGameObject: {fileID: 1416080714}
   image: {fileID: 1015224998}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1229890175}
   Fragments2: {fileID: 1554299871}
   Fragments3: {fileID: 976535606}
@@ -13857,7 +13879,7 @@ MonoBehaviour:
   levelText: {fileID: 1130936096}
   lockGameObject: {fileID: 1539297848}
   image: {fileID: 1187482151}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1717798906}
   Fragments2: {fileID: 549520958}
   Fragments3: {fileID: 101738321}
@@ -15075,7 +15097,7 @@ MonoBehaviour:
   levelText: {fileID: 849604463}
   lockGameObject: {fileID: 334422984}
   image: {fileID: 1344953308}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1446487746}
   Fragments2: {fileID: 744632752}
   Fragments3: {fileID: 1981974826}
@@ -15685,7 +15707,7 @@ MonoBehaviour:
   levelText: {fileID: 813518080}
   lockGameObject: {fileID: 1184224482}
   image: {fileID: 1418057043}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1478992350}
   Fragments2: {fileID: 644622345}
   Fragments3: {fileID: 1271266095}
@@ -16632,7 +16654,7 @@ MonoBehaviour:
   levelText: {fileID: 507242422}
   lockGameObject: {fileID: 1058055887}
   image: {fileID: 1495840392}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 614931251}
   Fragments2: {fileID: 1469982333}
   Fragments3: {fileID: 1604525795}
@@ -17998,7 +18020,7 @@ MonoBehaviour:
   levelText: {fileID: 641593902}
   lockGameObject: {fileID: 837933700}
   image: {fileID: 1606618368}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 430390888}
   Fragments2: {fileID: 899407844}
   Fragments3: {fileID: 1013493228}
@@ -19417,7 +19439,7 @@ MonoBehaviour:
   levelText: {fileID: 1447457323}
   lockGameObject: {fileID: 1726054840}
   image: {fileID: 1716578478}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1019267146}
   Fragments2: {fileID: 761112238}
   Fragments3: {fileID: 1045548783}
@@ -19878,7 +19900,7 @@ MonoBehaviour:
   levelText: {fileID: 2146101660}
   lockGameObject: {fileID: 1070051860}
   image: {fileID: 1745696471}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 2101322557}
   Fragments2: {fileID: 1059650044}
   Fragments3: {fileID: 334532614}
@@ -20199,27 +20221,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8871676536491450457, guid: 4cc49eb640a0c2b4d996f87b8133c1d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20361,8 +20383,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21754,7 +21776,7 @@ MonoBehaviour:
   levelText: {fileID: 511887082}
   lockGameObject: {fileID: 2130080247}
   image: {fileID: 1906330968}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1404464290}
   Fragments2: {fileID: 1931979558}
   Fragments3: {fileID: 1872764347}
@@ -21914,7 +21936,7 @@ MonoBehaviour:
   levelText: {fileID: 681391159}
   lockGameObject: {fileID: 996445112}
   image: {fileID: 1906932572}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 935018547}
   Fragments2: {fileID: 1146826730}
   Fragments3: {fileID: 1712844635}
@@ -22299,7 +22321,7 @@ MonoBehaviour:
   levelText: {fileID: 1126516994}
   lockGameObject: {fileID: 1117284674}
   image: {fileID: 1935027645}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1115089527}
   Fragments2: {fileID: 2077576561}
   Fragments3: {fileID: 1975037796}
@@ -23622,7 +23644,7 @@ MonoBehaviour:
   levelText: {fileID: 1599743799}
   lockGameObject: {fileID: 1187995258}
   image: {fileID: 2089329238}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1666877868}
   Fragments2: {fileID: 1404940909}
   Fragments3: {fileID: 1959458661}
@@ -24060,7 +24082,7 @@ MonoBehaviour:
   levelText: {fileID: 2006809163}
   lockGameObject: {fileID: 70355505}
   image: {fileID: 2113164217}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 2138376086}
   Fragments2: {fileID: 1907686797}
   Fragments3: {fileID: 637902029}
@@ -24445,7 +24467,7 @@ MonoBehaviour:
   levelText: {fileID: 1057410972}
   lockGameObject: {fileID: 1001185641}
   image: {fileID: 2133489476}
-  fragmentsCollectedSprite: {fileID: 21300000, guid: b678bcda308a5304d814a4d85589af7d, type: 3}
+  fragmentsCollectedSprite: {fileID: 21300000, guid: f96d207f9d5facd49883dc83e2fbe549, type: 3}
   Fragments1: {fileID: 1669188919}
   Fragments2: {fileID: 44668808}
   Fragments3: {fileID: 1479740411}
