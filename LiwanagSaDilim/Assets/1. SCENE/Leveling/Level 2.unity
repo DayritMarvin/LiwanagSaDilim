@@ -3588,6 +3588,10 @@ PrefabInstance:
       propertyPath: level
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1071700889107213780, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: exitDoor
+      value: 
+      objectReference: {fileID: 1353423781}
     - target: {fileID: 1796872940616480619, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_LocalPosition.y
       value: -37.1

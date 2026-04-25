@@ -1783,12 +1783,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1071700889107213780, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: level
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1071700889107213780, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: exitDoor
       value: 
-      objectReference: {fileID: 1711309393}
+      objectReference: {fileID: 382929408}
     - target: {fileID: 2036808225414748327, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.7
@@ -2951,7 +2951,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c1c6d015ad9c21c449bf337abece69b0, type: 3}
   m_Color: {r: 0.8679245, g: 0.8622222, b: 0.70825917, a: 1}
   m_FlipX: 0
@@ -8187,7 +8187,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c1c6d015ad9c21c449bf337abece69b0, type: 3}
   m_Color: {r: 0.8679245, g: 0.8622222, b: 0.70825917, a: 1}
   m_FlipX: 0
@@ -16384,6 +16384,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 75.39
       objectReference: {fileID: 0}
+    - target: {fileID: 2791959673588134819, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3010157687776745224, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
       propertyPath: cam
       value: 
@@ -16399,6 +16403,14 @@ PrefabInstance:
     - target: {fileID: 4293372093976666036, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
       propertyPath: m_Size.x
       value: 75.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851829847406643524, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 264.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851829847406643524, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 5371000308414832781, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
       propertyPath: cam

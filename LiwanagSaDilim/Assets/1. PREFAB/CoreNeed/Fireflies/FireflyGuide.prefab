@@ -45,28 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791f302629c72954f8bf9271de9aab93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   moveSpeed: 8
   detectionRadius: 2
   rotationSpeed: 100
+  waitTime: 1
   player: {fileID: 0}
 --- !u!1 &4531909368048115269
 GameObject:
