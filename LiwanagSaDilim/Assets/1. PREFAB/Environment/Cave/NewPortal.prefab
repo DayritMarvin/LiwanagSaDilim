@@ -202,7 +202,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2852340932066467537, guid: 5641ea8e14ffc244baa9087d03021aa6, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3998609605948569941, guid: 5641ea8e14ffc244baa9087d03021aa6, type: 3}
       propertyPath: m_LocalScale.x
@@ -259,6 +259,22 @@ PrefabInstance:
     - target: {fileID: 5045420182861080226, guid: 5641ea8e14ffc244baa9087d03021aa6, type: 3}
       propertyPath: m_Name
       value: portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815549151177018609, guid: 5641ea8e14ffc244baa9087d03021aa6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.19773358
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815549151177018609, guid: 5641ea8e14ffc244baa9087d03021aa6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8757523
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815549151177018609, guid: 5641ea8e14ffc244baa9087d03021aa6, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.030191485
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815549151177018609, guid: 5641ea8e14ffc244baa9087d03021aa6, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.09279041
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
