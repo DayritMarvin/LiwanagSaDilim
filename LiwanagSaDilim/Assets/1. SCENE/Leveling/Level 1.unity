@@ -3199,6 +3199,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5365678059688749755, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5414691975180136581, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9454,7 +9458,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Interact
 
-    Press to talk, pick up items, or use objects.'
+    Hold press to pull object.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c309cc83b7cb17640afc8ed95eea999e, type: 2}
   m_sharedMaterial: {fileID: -5540213099596430680, guid: c309cc83b7cb17640afc8ed95eea999e, type: 2}
