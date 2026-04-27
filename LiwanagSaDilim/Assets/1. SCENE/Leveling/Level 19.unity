@@ -4639,6 +4639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle ROCK
       objectReference: {fileID: 0}
+    - target: {fileID: 3607484563898871536, guid: 0bb16f6bc7fbee244b28b777a5819a1e, type: 3}
+      propertyPath: m_TagString
+      value: HeavyPushable
+      objectReference: {fileID: 0}
     - target: {fileID: 5323730550789428095, guid: 0bb16f6bc7fbee244b28b777a5819a1e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1102788
@@ -4653,11 +4657,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5323730550789428095, guid: 0bb16f6bc7fbee244b28b777a5819a1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.77
+      value: 83.65
       objectReference: {fileID: 0}
     - target: {fileID: 5323730550789428095, guid: 0bb16f6bc7fbee244b28b777a5819a1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.23
+      value: -4.28
       objectReference: {fileID: 0}
     - target: {fileID: 5323730550789428095, guid: 0bb16f6bc7fbee244b28b777a5819a1e, type: 3}
       propertyPath: m_LocalPosition.z
