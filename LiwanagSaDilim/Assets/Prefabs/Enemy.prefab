@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 9035237335739260269}
   - component: {fileID: 7157530267210887472}
   - component: {fileID: 8599570669685283524}
-  - component: {fileID: 7879480819188861220}
   - component: {fileID: 225399767797387007}
+  - component: {fileID: 3871750643793861868}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -292,8 +292,24 @@ PolygonCollider2D:
       - {x: 0.42999998, y: -2.07}
       - {x: 0.34, y: -1.99}
   m_UseDelaunayMesh: 0
---- !u!61 &7879480819188861220
-BoxCollider2D:
+--- !u!114 &225399767797387007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302319530834803368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9438b38532730c443881d8a19ecf6b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 7419808847569169859}
+  pointB: {fileID: 5910600646356915022}
+  speed: 1
+  threshold: 2
+--- !u!58 &3871750643793861868
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -321,38 +337,12 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.0520868, y: -1.2841246}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.16, y: 4.54}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.44, y: -0.71}
   serializedVersion: 2
-  m_Size: {x: 8.2641735, y: 1.9717507}
-  m_EdgeRadius: 0
---- !u!114 &225399767797387007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302319530834803368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9438b38532730c443881d8a19ecf6b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointA: {fileID: 7419808847569169859}
-  pointB: {fileID: 5910600646356915022}
-  speed: 2
-  threshold: 0.1
+  m_Radius: 2.12
 --- !u!1 &2714612344274716851
 GameObject:
   m_ObjectHideFlags: 0
