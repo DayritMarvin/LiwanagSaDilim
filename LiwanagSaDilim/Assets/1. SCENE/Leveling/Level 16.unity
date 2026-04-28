@@ -4577,7 +4577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349910991907629389, guid: e9cea59aa71acc0439d2216d89740f57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 8349910991907629389, guid: e9cea59aa71acc0439d2216d89740f57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8996,6 +8996,10 @@ PrefabInstance:
     - target: {fileID: 6218498615368901234, guid: 33c59cbd7d4022b4fa51b56a3abf930b, type: 3}
       propertyPath: m_Name
       value: CAVE prefav
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288588412199794099, guid: 33c59cbd7d4022b4fa51b56a3abf930b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 6492196358011925426, guid: 33c59cbd7d4022b4fa51b56a3abf930b, type: 3}
       propertyPath: m_LocalPosition.x
