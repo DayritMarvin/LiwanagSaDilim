@@ -24,7 +24,7 @@ public static class GameManager
         levelUnlock.Clear();
 
         // Setup for 10 Levels (Pwede mong dagdagan kung marami kang levels)
-        for (int i = 1; i <= 10; i++) 
+        for (int i = 1; i <= 30; i++) 
         {
             levelProgress.Add(i, 0); // Default 0 fragments
             
