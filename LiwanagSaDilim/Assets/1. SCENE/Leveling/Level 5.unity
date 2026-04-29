@@ -19412,6 +19412,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 772754844}
     m_Modifications:
+    - target: {fileID: 2953313674328141374, guid: a44bc2fafbc64c548995aa445e79db8b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2996516581643519487, guid: a44bc2fafbc64c548995aa445e79db8b, type: 3}
       propertyPath: m_Name
       value: Grass
