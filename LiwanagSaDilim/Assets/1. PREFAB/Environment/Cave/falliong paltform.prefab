@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3605538380723036142}
   - component: {fileID: 2622124314456943261}
   - component: {fileID: 8698730294392135611}
+  - component: {fileID: 1551811670121657993}
   m_Layer: 0
   m_Name: falliong paltform
   m_TagString: Untagged
@@ -331,3 +332,24 @@ MonoBehaviour:
   fallDelay: 1
   destroyDelay: 0.5
   rb: {fileID: 3164407984717598741}
+--- !u!95 &1551811670121657993
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740744135705322350}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ab427423faa6804898d86cfb789bed2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

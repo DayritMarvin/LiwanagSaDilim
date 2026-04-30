@@ -10,7 +10,6 @@ public class LevelButton : MonoBehaviour
     [SerializeField] int level = 1;
     [SerializeField] TextMeshProUGUI levelText;
     
-    // BINALIK NATIN: Para makita mo ulit ang slot sa Inspector!
     [SerializeField] GameObject lockGameObject; 
     
     [SerializeField] Image image;
@@ -28,13 +27,25 @@ public class LevelButton : MonoBehaviour
 
     void Start()
     {
+        // 1. Tatanungin muna natin ang GameManager
         unlock = GameManager.CheckLevelUnlock(level);
+
+        // =========================================================
+        // BAGO: EDITOR OVERRIDE PARA SA MAS MADALING TESTING
+        // Kung manu-mano mong tinago (in-uncheck) ang padlock sa Editor,
+        // o kaya ay walang nakalagay na padlock, automatic UNLOCKED ito!
+        // =========================================================
+        if (lockGameObject == null || !lockGameObject.activeSelf)
+        {
+            unlock = true;
+        }
+
         levelText.text = level.ToString();
 
+        // 2. I-setup ang hitsura at button state
         if (unlock)
         {
             image.color = Color.white; 
-            // Itatago ang padlock kapag unlocked
             if (lockGameObject != null) lockGameObject.SetActive(false);
 
             int unlockedHearts = GameManager.CheckLevelFragmentsCollected(level);
@@ -45,7 +56,6 @@ public class LevelButton : MonoBehaviour
         else
         {
             image.color = Color.grey; 
-            // Ipapakita ang padlock kapag naka-lock
             if (lockGameObject != null) lockGameObject.SetActive(true); 
         }
     }

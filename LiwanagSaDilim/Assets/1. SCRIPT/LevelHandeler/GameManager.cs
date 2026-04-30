@@ -24,7 +24,7 @@ public static class GameManager
             levelProgress.Add(i, 0); 
             
             // BAGO: I-unlock agad ang Level 1 hanggang 5. I-lock ang 6 pataas.
-            if (i <= 5)
+            if (i <= 1)
             {
                 levelUnlock.Add(true); 
             }

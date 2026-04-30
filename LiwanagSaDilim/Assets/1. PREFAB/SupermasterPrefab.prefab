@@ -7537,6 +7537,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2771545681841691233, guid: ff3a2ca6481ebcc41b31bd474b8467e5, type: 3}
+      propertyPath: dashSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2771545681841691233, guid: ff3a2ca6481ebcc41b31bd474b8467e5, type: 3}
       propertyPath: dashButton
       value: 
       objectReference: {fileID: 6056984367817626702}
@@ -7608,6 +7612,10 @@ PrefabInstance:
       propertyPath: followingFireflies.Array.data[4]
       value: 
       objectReference: {fileID: 7373467877529031520}
+    - target: {fileID: 4128512794797235921, guid: ff3a2ca6481ebcc41b31bd474b8467e5, type: 3}
+      propertyPath: maxPanDistance
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

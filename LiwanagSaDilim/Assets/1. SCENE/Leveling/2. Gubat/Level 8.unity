@@ -1525,6 +1525,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3465020993814502604, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_text
+      value: 'Level: 18'
+      objectReference: {fileID: 0}
     - target: {fileID: 6600231255975222753, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.3
@@ -16600,6 +16604,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1005568614}
+  - {fileID: 1067610955}
   - {fileID: 2899175597667000800}
   - {fileID: 8023846678151062346}
   - {fileID: 5997309587430760532}
@@ -16617,8 +16623,6 @@ SceneRoots:
   - {fileID: 108962726}
   - {fileID: 343146991}
   - {fileID: 776954242}
-  - {fileID: 1067610955}
-  - {fileID: 1005568614}
   - {fileID: 272759652}
   - {fileID: 2004597705}
   - {fileID: 1991933493}
