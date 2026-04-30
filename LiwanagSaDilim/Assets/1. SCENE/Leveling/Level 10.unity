@@ -2815,6 +2815,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5984813931935645010, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_text
+      value: 'Level: 10'
+      objectReference: {fileID: 0}
     - target: {fileID: 6237070912649107503, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_SortingOrder
       value: 7

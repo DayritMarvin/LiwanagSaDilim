@@ -736,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5939668169928026460, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
       propertyPath: m_SortingOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6115122708133041578, guid: 2e545aefc53859a439bfd087713db93a, type: 3}
       propertyPath: m_LocalScale.y
@@ -7222,6 +7222,10 @@ PrefabInstance:
     - target: {fileID: 5814593001102230397, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_SortingOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984813931935645010, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
+      propertyPath: m_text
+      value: 'Level: 9'
       objectReference: {fileID: 0}
     - target: {fileID: 6157037884129639906, guid: d29198b86c0a6f742b7ca0ab60b00c65, type: 3}
       propertyPath: m_SortingOrder
