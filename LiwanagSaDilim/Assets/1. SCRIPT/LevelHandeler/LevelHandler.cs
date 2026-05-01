@@ -1,4 +1,5 @@
 using System;
+using System.Collections; // BAGO: Kailangan ito para sa IEnumerator (Loading Screen)
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,20 +11,23 @@ public class LevelHandler : MonoBehaviour
     [SerializeField] Animator FragmentsPanel2;
     [SerializeField] Animator FragmentsPanel3;
 
-    // --- BAGO: Reference para sa Door Object ---
     [Header("Level Objects")]
-    [SerializeField] GameObject exitDoor; // I-drag mo dito yung Door object
+    [SerializeField] GameObject exitDoor; 
 
     [SerializeField] GameObject VictoryPanel;
     [SerializeField] GameObject GameoverPanel;
     [SerializeField] GameObject MenuPanel;
+
+    // --- BAGO: Mga Settings para sa Loading Screen ---
+    [Header("Loading Screen Settings")]
+    [SerializeField] GameObject loadingPanel; // I-drag dito ang itim na panel na may Liyab animation
+    [SerializeField] float minLoadTime = 1f; // Oras na tatakbo si Liyab (seconds)
 
     [NonSerialized] public int fragmentsCollected = 0;
     public bool levelEnd = false;
 
     private void Start()
     {
-        // Siguraduhin na nakatago ang door sa simula ng laro
         if (exitDoor != null)
         {
             exitDoor.SetActive(false);
@@ -42,7 +46,6 @@ public class LevelHandler : MonoBehaviour
     {
         fragmentsCollected++;
         
-        // Play animations based on count
         switch (fragmentsCollected)
         {
             case 1:
@@ -56,20 +59,17 @@ public class LevelHandler : MonoBehaviour
                 break;
         }
 
-        // --- BAGO: Check kung 3 na ang nakuha ---
         if (fragmentsCollected >= 3)
         {
             ShowExitDoor();
         }
     }
 
-    // Function para ilabas ang door
     void ShowExitDoor()
     {
         if (exitDoor != null)
         {
             exitDoor.SetActive(true);
-            // Optional: Pwede ka magdagdag ng sound effect dito pag lumabas ang door
         }
     }
 
@@ -102,28 +102,32 @@ public class LevelHandler : MonoBehaviour
         }
     }
 
-    // ... (Keep the rest of your button functions: RetryLevel, MainMenu, etc. unchanged) ...
+    // --- MGA BINAGONG BUTTON FUNCTIONS ---
     
     public void RetryLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; // Ibalik sa normal ang oras bago mag-load
+        StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name));
     }
+    
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; 
+        StartCoroutine(LoadAsynchronously("MainMenu"));
     }
+    
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level " + (level + 1));
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; 
+        StartCoroutine(LoadAsynchronously("Level " + (level + 1)));
     }
+    
     public void Menubtn()
     {
         MenuPanel.SetActive(true);
         Time.timeScale = 0f;
     }
+    
     public void Resumebtn()
     {
         MenuPanel.SetActive(false);
@@ -133,5 +137,45 @@ public class LevelHandler : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    // =========================================================
+    // --- BAGO: DITO NA GAGAWIN ANG LOADING ANIMATION ---
+    // =========================================================
+    IEnumerator LoadAsynchronously(string sceneName)
+    {
+        // 1. I-activate ang Loading Screen
+        if (loadingPanel != null)
+        {
+            loadingPanel.SetActive(true);
+        }
+
+        float timer = 0f;
+
+        // 2. Simulan ang pag-load sa background
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        
+        // Pigilan muna ang Unity na lumipat agad para makita ang animation
+        operation.allowSceneActivation = false; 
+
+        // 3. Loop habang naghihintay
+        while (!operation.isDone)
+        {
+            // Bilangin ang oras na lumipas
+            timer += Time.unscaledDeltaTime;
+
+            // Ang Unity ay humihinto sa 0.9 progress kapag pinigilan natin lumipat
+            if (operation.progress >= 0.9f)
+            {
+                // Kung tapos na mag-load AT lumampas na sa minimum time (halimbawa: 1.5s)
+                if (timer >= minLoadTime)
+                {
+                    // Lipat na sa next scene!
+                    operation.allowSceneActivation = true;
+                }
+            }
+
+            yield return null; // Maghintay per frame
+        }
     }
 }
