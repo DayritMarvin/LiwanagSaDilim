@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1179683261969428196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7211256602889389293}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Point A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2143726553260206664}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Point B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
