@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class FireflyGuide : MonoBehaviour
 {
-    [Header("Mga Puntos na Hihintuan (Waypoints)")]
+    [Header("Guidepoint here")]
     public List<Transform> waypoints; 
 
-    [Header("Settings ng Alitaptap")]
     public float moveSpeed = 5f;        
     public float detectionRadius = 2f;  
     public float rotationSpeed = 10f;   
     public float waitTime = 1f; 
 
-    [Header("Sino ang susundan?")]
     public Transform player; 
 
     private int currentWaypointIndex = 0;

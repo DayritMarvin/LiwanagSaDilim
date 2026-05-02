@@ -27,14 +27,8 @@ public class LevelButton : MonoBehaviour
 
     void Start()
     {
-        // 1. Tatanungin muna natin ang GameManager
         unlock = GameManager.CheckLevelUnlock(level);
 
-        // =========================================================
-        // BAGO: EDITOR OVERRIDE PARA SA MAS MADALING TESTING
-        // Kung manu-mano mong tinago (in-uncheck) ang padlock sa Editor,
-        // o kaya ay walang nakalagay na padlock, automatic UNLOCKED ito!
-        // =========================================================
         if (lockGameObject == null || !lockGameObject.activeSelf)
         {
             unlock = true;

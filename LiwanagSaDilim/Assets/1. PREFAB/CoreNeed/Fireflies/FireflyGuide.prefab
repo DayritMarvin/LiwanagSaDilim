@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: []
   moveSpeed: 8
-  detectionRadius: 2
+  detectionRadius: 4
   rotationSpeed: 100
   waitTime: 1
   player: {fileID: 0}
@@ -126,6 +126,18 @@ PrefabInstance:
     - target: {fileID: 2949609471034633913, guid: 224075fa6f730ad4fb56d130364e3011, type: 3}
       propertyPath: m_Name
       value: Yellow Firefly
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677763247493676577, guid: 224075fa6f730ad4fb56d130364e3011, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677763247493676577, guid: 224075fa6f730ad4fb56d130364e3011, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5756341
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677763247493676577, guid: 224075fa6f730ad4fb56d130364e3011, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8888918703251700414, guid: 224075fa6f730ad4fb56d130364e3011, type: 3}
       propertyPath: m_LocalPosition.x

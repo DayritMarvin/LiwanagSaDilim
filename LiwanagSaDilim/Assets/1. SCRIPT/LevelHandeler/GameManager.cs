@@ -10,7 +10,7 @@ public static class GameManager
     static GameManager()
     {
         InitializeData(); 
-        LoadProgress(); // BINALIK NATIN: Para gumana ang saving at unlocking ng Level 6
+        LoadProgress();
     }
 
     static void InitializeData()
@@ -18,12 +18,10 @@ public static class GameManager
         levelProgress.Clear();
         levelUnlock.Clear();
 
-        // Setup para sa 10 Levels 
         for (int i = 1; i <= 10; i++) 
         {
             levelProgress.Add(i, 0); 
             
-            // BAGO: I-unlock agad ang Level 1 hanggang 5. I-lock ang 6 pataas.
             if (i <= 1)
             {
                 levelUnlock.Add(true); 
