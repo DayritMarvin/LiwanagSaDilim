@@ -329,8 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81c982b77cb0664584f070786da95a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallDelay: 1
-  destroyDelay: 0.5
+  fallDelay: 2
+  destroyDelay: 1
   rb: {fileID: 3164407984717598741}
 --- !u!95 &1551811670121657993
 Animator:

@@ -3,19 +3,24 @@ using UnityEngine;
 
 public class DisintegratingPlatformHidden : MonoBehaviour
 {
-    [SerializeField] private float breakDelay = 0.5f;
+    [SerializeField] private float breakDelay = 0.3f;
     [SerializeField] private float respawnDelay = 2f;
 
     [SerializeField] private Collider2D col;
-    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private GameObject visualChild;
+    [SerializeField] private Animator anim;
 
     private bool triggered = false;
     private bool activePlatform = false;
 
     private void Start()
     {
-        col.enabled = false;
-        sr.enabled = false;
+        // Start hidden
+        if (col != null)
+            col.enabled = false;
+
+        if (visualChild != null)
+            visualChild.SetActive(false);
     }
 
     public void Activate()
@@ -25,8 +30,11 @@ public class DisintegratingPlatformHidden : MonoBehaviour
 
         activePlatform = true;
 
-        col.enabled = true;
-        sr.enabled = true;
+        if (col != null)
+            col.enabled = true;
+
+        if (visualChild != null)
+            visualChild.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,6 +46,7 @@ public class DisintegratingPlatformHidden : MonoBehaviour
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
+                // Only trigger if player lands on top
                 if (contact.normal.y < -0.5f)
                 {
                     StartCoroutine(BreakAndRespawn());
@@ -51,17 +60,29 @@ public class DisintegratingPlatformHidden : MonoBehaviour
     {
         triggered = true;
 
+        // Play shake animation first
+        if (anim != null)
+            anim.SetTrigger("Shake");
+
         yield return new WaitForSeconds(breakDelay);
 
-        col.enabled = false;
-        sr.enabled = false;
+        // Hide platform
+        if (col != null)
+            col.enabled = false;
+
+        if (visualChild != null)
+            visualChild.SetActive(false);
 
         yield return new WaitForSeconds(respawnDelay);
 
+        // Respawn only if activated
         if (activePlatform)
         {
-            col.enabled = true;
-            sr.enabled = true;
+            if (col != null)
+                col.enabled = true;
+
+            if (visualChild != null)
+                visualChild.SetActive(true);
         }
 
         triggered = false;

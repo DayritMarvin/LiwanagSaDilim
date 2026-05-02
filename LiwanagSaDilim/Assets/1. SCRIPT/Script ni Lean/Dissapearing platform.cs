@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class DisintegratingPlatform : MonoBehaviour
 {
-    [SerializeField] private float breakDelay = 0.5f;
+    [SerializeField] private float breakDelay = 0.3f;
     [SerializeField] private float respawnDelay = 2f;
 
     [SerializeField] private Collider2D col;
     [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Animator anim;
 
     private bool triggered = false;
 
@@ -20,7 +21,7 @@ public class DisintegratingPlatform : MonoBehaviour
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
-                // ✅ Only trigger from TOP
+                // only trigger from top
                 if (contact.normal.y < -0.5f)
                 {
                     StartCoroutine(BreakAndRespawn());
@@ -34,17 +35,19 @@ public class DisintegratingPlatform : MonoBehaviour
     {
         triggered = true;
 
-        // ⏱ Delay before disappearing
+        // 🔥 shake first
+        if (anim != null)
+            anim.SetTrigger("Shake");
+
         yield return new WaitForSeconds(breakDelay);
 
-        // 💥 Disappear
+        // disappear
         col.enabled = false;
         sr.enabled = false;
 
-        // ⏳ Wait before respawn
         yield return new WaitForSeconds(respawnDelay);
 
-        // 🔁 Reappear
+        // reappear
         col.enabled = true;
         sr.enabled = true;
 

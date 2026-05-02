@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class DisintegratingPlatformToggle : MonoBehaviour
 {
-    [SerializeField] private float breakDelay = 0.5f;
+    [SerializeField] private float breakDelay = 0.3f;
     [SerializeField] private float respawnDelay = 2f;
 
     [SerializeField] private Collider2D col;
     [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Animator anim;
 
     private bool triggered = false;
     private bool activePlatform = false;
 
     private void Start()
     {
-        // start hidden
         col.enabled = false;
         sr.enabled = false;
     }
@@ -59,6 +59,10 @@ public class DisintegratingPlatformToggle : MonoBehaviour
     private IEnumerator BreakAndRespawn()
     {
         triggered = true;
+
+        // 🔥 shake first
+        if (anim != null)
+            anim.SetTrigger("Shake");
 
         yield return new WaitForSeconds(breakDelay);
 
