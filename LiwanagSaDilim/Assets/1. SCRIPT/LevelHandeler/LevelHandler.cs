@@ -104,6 +104,7 @@ public class LevelHandler : MonoBehaviour
     
     public void RetryLevel()
     {
+        Time.timeScale = 1f; 
         StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name));
     }
     
